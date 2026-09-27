@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FF9A5C"/><stop offset=".45" stop-color="#B2457A"/><stop offset="1" stop-color="#2A1245"/></linearGradient>
+    <linearGradient id="hill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3E8F4E"/><stop offset="1" stop-color="#1E4A2C"/></linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="112" fill="url(#bg)"/>
+  <circle cx="256" cy="210" r="70" fill="#FFD27A" opacity=".85"/>
+  <path d="M0 330c80-50 170-60 256-40s180 20 256-10v232H0z" fill="url(#hill)"/>
+  <!-- casa -->
+  <g transform="translate(150 196)">
+    <path d="M0 110 106 20l106 90" fill="none" stroke="#3A1A0A" stroke-width="16" stroke-linejoin="round"/>
+    <path d="M18 104h176v126H18z" fill="#F4E4C1" stroke="#3A1A0A" stroke-width="10"/>
+    <path d="M-6 116 106 22l112 94" fill="none" stroke="#C0392B" stroke-width="22" stroke-linejoin="round" stroke-linecap="round"/>
+    <path d="M86 160h40v70H86z" fill="#8A4B20" stroke="#3A1A0A" stroke-width="8"/>
+    <path d="M36 138h36v30H36zM140 138h36v30h-36z" fill="#FFC83D" stroke="#3A1A0A" stroke-width="8"/>
+    <path d="M150 34v-26h26v48" fill="#8A4B20" stroke="#3A1A0A" stroke-width="8"/>
+  </g>
+  <!-- carta heredada -->
+  <g transform="rotate(-12 390 410)">
+    <rect x="320" y="370" width="140" height="92" rx="10" fill="#FFF7E6" stroke="#3A1A0A" stroke-width="8"/>
+    <path d="M324 376l66 50 66-50" fill="none" stroke="#3A1A0A" stroke-width="8" stroke-linejoin="round"/>
+    <circle cx="390" cy="428" r="14" fill="#C0392B"/>
+  </g>
+  <!-- árbol -->
+  <circle cx="92" cy="300" r="44" fill="#2F7A3E"/><path d="M92 300v70" stroke="#5A3212" stroke-width="14"/>
+</svg>

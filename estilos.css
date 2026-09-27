@@ -1,0 +1,64 @@
+/* Página pública de descarga de NEONPLAY: mismos colores y letras que la app beta */
+[hidden]{display:none!important}
+:root{--bg:#0E0B1F;--card:#1B1640;--card2:#241C52;--line:#2E2765;--text:#F4F1FF;--dim:#A9A2D3;--pink:#FF3D9A;--cyan:#35E3F0;--amber:#FFC83D;--green:#22C55E;
+  --fd:'Unbounded','Arial Black',system-ui,sans-serif;--fb:'Onest',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:radial-gradient(800px 460px at 50% -140px,#3a1f8a66,transparent 70%),var(--bg);color:var(--text);font:16px/1.55 var(--fb);-webkit-text-size-adjust:100%}
+a{color:var(--cyan)}
+img{max-width:100%}
+.wrap{width:100%;max-width:1040px;margin:0 auto;padding:0 18px}
+.muted{color:var(--dim)}.small{font-size:13px}
+h1,h2{font-family:var(--fd);line-height:1.15;margin:0}
+h1{font-size:clamp(30px,6vw,52px);margin:6px 0 12px}
+h2{font-size:clamp(21px,3.4vw,28px);margin:44px 0 14px}
+.nav{display:flex;justify-content:space-between;align-items:center;padding-top:20px;padding-bottom:20px}
+.wordmark{font:700 22px/1 var(--fd);letter-spacing:.03em;text-decoration:none}
+.wordmark .n{color:var(--cyan);text-shadow:0 0 14px #35E3F088}.wordmark .p{color:var(--pink);text-shadow:0 0 14px #FF3D9A88}
+.pill{font-size:12.5px;padding:5px 11px;border-radius:99px;border:1px solid #FFC83D66;color:#FFE08A;font-weight:700;white-space:nowrap}
+.hero{display:grid;gap:18px}
+.lead{color:var(--dim);font-size:17px;margin:0 0 20px}
+.dl{display:flex;flex-direction:column;gap:8px;padding:16px;border-radius:22px;background:linear-gradient(135deg,#FF3D9A22,#35E3F016);border:1px solid #FF3D9A55}
+.dl small{text-align:center;color:var(--dim)}
+.btn{display:block;text-align:center;padding:16px 18px;border-radius:16px;background:var(--pink);color:#1C0024;font-weight:800;font-size:18px;text-decoration:none;box-shadow:0 0 24px #FF3D9A66}
+.btn:hover,.btn:focus-visible{filter:brightness(1.08)}
+.btn[aria-disabled="true"]{background:var(--card2);color:var(--dim);box-shadow:none;pointer-events:none}
+.pj{position:relative;height:230px;margin:0;border-radius:22px;overflow:hidden;border:1px solid var(--line);background:radial-gradient(260px 160px at 50% 100%,#FF3D9A33,transparent 70%),radial-gradient(300px 200px at 50% 0%,#35E3F022,transparent 70%),#0a0817}
+.pj img{position:absolute;bottom:-6px;filter:drop-shadow(0 8px 18px #000a)}
+.pj .a{left:7%;height:190px}.pj .l{left:50%;transform:translateX(-50%);height:222px;z-index:2}.pj .k{right:7%;height:195px}
+.shots{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:6px}
+.phone{flex:none;width:min(62vw,230px);margin:0;scroll-snap-align:start;border-radius:26px;padding:7px;background:#050409;border:1px solid #ffffff22;box-shadow:0 12px 28px #0009}
+.phone img{display:block;width:100%;aspect-ratio:9/19;object-fit:cover;object-position:top;border-radius:20px}
+.phone figcaption{text-align:center;font-size:13px;color:var(--dim);padding:6px 0 2px}
+.cards{display:grid;gap:10px}
+.card{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:center;padding:14px;border-radius:18px;background:var(--card);border:1px solid var(--line);color:inherit;text-decoration:none}
+.card.col{grid-template-columns:1fr}
+.card b{display:block}.card small{display:block;color:var(--dim)}
+.card.games{grid-template-columns:1fr}
+.icons{display:flex;gap:6px;flex-wrap:wrap}.icons img{width:48px;height:48px;border-radius:12px}
+.ic{width:44px;height:44px;display:grid;place-items:center;border-radius:14px;background:#35E3F01a;font-size:23px}
+.ic-img{width:44px;height:44px}
+.warn{padding:4px 18px 16px;border-radius:22px;border:1px solid #FFC83D66;background:#FFC83D10;margin-top:44px}
+.warn h2{margin-top:18px}
+.warn p{margin:0 0 10px}
+.perm{display:grid;gap:6px;margin:0;padding:0;list-style:none}
+.perm li{display:flex;gap:8px}.perm .ok{color:var(--green)}.perm .no{color:#FF6B8A}
+.steps{counter-reset:s;display:grid;gap:10px;margin:0;padding:0;list-style:none}
+.steps li{counter-increment:s;display:grid;grid-template-columns:36px 1fr;gap:10px;align-items:start;padding:12px;border-radius:16px;background:var(--card);border:1px solid var(--line)}
+.steps li::before{content:counter(s);width:32px;height:32px;display:grid;place-items:center;border-radius:50%;background:var(--pink);color:#1C0024;font-weight:800}
+.steps small{display:block;color:var(--dim)}
+.trust{display:grid;gap:10px}
+code{font:12.5px/1.4 ui-monospace,Consolas,monospace;color:var(--text);word-break:break-all;background:var(--card2);padding:6px 8px;border-radius:8px;margin-top:6px;display:block}
+.faq details{padding:12px 14px;border-radius:14px;background:var(--card);border:1px solid var(--line);margin-bottom:8px}
+.faq summary{font-weight:700;cursor:pointer}
+.faq p{margin:8px 0 0;color:var(--dim)}
+.foot{margin:48px auto 0;padding-bottom:36px;text-align:center;color:var(--dim);font-size:14px}
+.foot p{margin:6px 0}
+@media (min-width:860px){
+  .hero{grid-template-columns:1.1fr 1fr;align-items:center;gap:36px;padding-top:20px}
+  .pj{height:360px}.pj .a{height:300px}.pj .l{height:345px}.pj .k{height:305px}
+  .cards{grid-template-columns:1fr 1fr}.card.games{grid-column:1/-1}
+  .trust{grid-template-columns:1fr 1fr}
+  .shots{overflow:visible;justify-content:center}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
