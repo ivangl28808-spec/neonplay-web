@@ -62,3 +62,22 @@ code{font:12.5px/1.4 ui-monospace,Consolas,monospace;color:var(--text);word-brea
   .shots{overflow:visible;justify-content:center}
 }
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+/* Página de los juegos (Tierralma y Grieta) */
+.hero.solo{grid-template-columns:1fr;text-align:center;padding-top:10px}
+.hero.solo .lead{margin-bottom:22px}
+.saltos{display:grid;gap:10px;max-width:640px;margin:0 auto}
+.salto{display:flex;gap:12px;align-items:center;padding:12px;border-radius:18px;background:var(--card);border:1px solid var(--line);color:inherit;text-decoration:none;text-align:left}
+.salto img{width:56px;height:56px;border-radius:14px}
+.salto b{display:block;font-family:var(--fd);font-size:18px}.salto small{color:var(--dim)}
+.salto.t{border-color:#35E3F055}.salto.g{border-color:#FF3D9A55}
+.juego{margin-top:48px;padding-top:4px}
+.juego-cab{display:flex;gap:14px;align-items:center;margin-bottom:14px}
+.juego-cab img{width:72px;height:72px;border-radius:18px;flex:none}
+.juego-cab h2{margin:0 0 4px}.juego-cab p{margin:0}
+.capturas{display:grid;gap:10px}
+.captura{margin:0 0 10px;border-radius:18px;overflow:hidden;border:1px solid var(--line);background:#000}
+.captura img{display:block;width:100%;aspect-ratio:13/6;object-fit:cover}
+.lista{margin:6px 0 16px;padding-left:20px;color:var(--dim)}.lista li{margin:4px 0}
+.juego.t .btn{background:var(--cyan);color:#00222A;box-shadow:0 0 24px #35E3F066}
+.juego.t .dl{background:linear-gradient(135deg,#35E3F022,#22C55E14);border-color:#35E3F055}
+@media (min-width:860px){.saltos{grid-template-columns:1fr 1fr}.capturas{grid-template-columns:1fr 1fr}}
