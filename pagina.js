@@ -2,7 +2,7 @@
 // la versión, la fecha, el tamaño y la huella (sha256sum descargas/*.apk).
 'use strict';
 const JUEGOS = {
-  tierralma: { version: 'de prueba 4', fecha: '2026-10-01', bytes: 13633846, sha256: '65c0aadf896675c258f8d941fae1b4e43a00e02244a8735d9f2904d1c1a3d2f3' },
+  tierralma: { version: 'de prueba 5', fecha: '2026-10-03', bytes: 16324155, sha256: 'b324a34940cf49303990212e0d9c6d3e475107cbfd77a06bc294483aae7bf79f' },
   grieta: { version: 'de prueba 4', fecha: '2026-10-01', bytes: 5895865, sha256: 'beef7f3d5047b375701d1e0235a9e6368524ec3b5c88068fdcb2971136fb2304' }
 };
 const CONFIG = {
