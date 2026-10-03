@@ -7,4 +7,4 @@ Se publica con GitHub Pages desde la rama `main`.
   Salen del flujo «Juegos (APK propio)» del repositorio `neonplay` (Releases `tierralma-N` y `grieta-N`).
 - Al subir un APK nuevo: reemplazar el archivo en `descargas/` y actualizar versión, fecha, tamaño y huella
   (`sha256sum descargas/*.apk`) en `pagina.js`.
-- `privacidad.html`: aviso de privacidad de los juegos (borrador). `legal.html` es el de NEONPLAY, que está en pausa.
+- `privacidad.html`: aviso de privacidad de los juegos (el que va en Google Play; actualizado el 3-oct-2026). `legal.html` es el de NEONPLAY, que está en pausa.
