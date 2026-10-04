@@ -7,4 +7,6 @@ Se publica con GitHub Pages desde la rama `main`.
   Salen del flujo «Juegos (APK propio)» del repositorio `neonplay` (Releases `tierralma-N` y `grieta-N`).
 - Al subir un APK nuevo: reemplazar el archivo en `descargas/` y actualizar versión, fecha, tamaño y huella
   (`sha256sum descargas/*.apk`) en `pagina.js`.
+- `tierralma/`: la ventana del juego (video, fotos, `objetos.js` e `iconos.png`). Los objetos se regeneran desde el repositorio `neonplay` con
+  `node scripts/tierralma-objetos-pdf.cjs --web ../neonplay-web/tierralma` (con el juego servido en el puerto 8765).
 - `privacidad.html`: aviso de privacidad de los juegos (el que va en Google Play; actualizado el 3-oct-2026). `legal.html` es el de NEONPLAY, que está en pausa.
