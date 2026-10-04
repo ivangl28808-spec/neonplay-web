@@ -36,16 +36,20 @@
   </section>
 
   <section class="wrap juego t" id="tierralma">
-    <div class="juego-cab"><img src="img/juegos/tierralma.svg" alt=""><div><h2>Tierralma</h2><p class="muted">Sobrevive en una isla, construye tu casa y hazte aventurero del gremio.</p></div></div>
-    <figure class="captura"><img src="img/juegos/tierralma-1.jpg" alt="Tierralma: el personaje en la pradera con su vida, hambre y sed" loading="lazy"></figure>
+    <div class="juego-cab"><a href="#tierralma-info" data-abrir-tl aria-label="Ver todo sobre Tierralma"><img src="img/juegos/tierralma.svg" alt=""></a><div><h2>Tierralma</h2><p class="muted">Sobrevive en una isla, construye tu casa y hazte aventurero del gremio.</p></div></div>
+    <a class="captura abre" href="#tierralma-info" data-abrir-tl>
+      <img src="tierralma/cerezo.jpg" alt="Tierralma: el bosque de cerezos" loading="lazy">
+      <span class="abre-txt">▶ Video, fotos y los 174 objetos</span>
+    </a>
     <ul class="lista">
       <li>Junta, fabrica y construye: decenas de recetas, herramientas, armaduras, cultivos y ganado.</li>
-      <li>Día y noche: de noche salen zombis; de día, ladrones. Tres mini jefes.</li>
+      <li>Día y noche: de noche salen zombis; de día, ladrones. 8 jefes y 5 mazmorras.</li>
       <li>Minas con pisos escondidos que cambian cada semana.</li>
       <li>Aldeas con oficios y un gremio con 15 misiones al día, rangos de F a S+, bar y posada.</li>
     </ul>
     <div class="dl">
       <a class="btn" data-descarga="tierralma" href="descargas/Tierralma.apk" download>⬇ Descargar Tierralma</a>
+      <a class="btn2" href="#tierralma-info" data-abrir-tl>Conocer el juego</a>
       <small data-info="tierralma">Gratis · Android 7 o superior</small>
     </div>
   </section>
@@ -112,6 +116,79 @@
   <p><a href="privacidad.html">Aviso de privacidad</a><span id="contacto"></span></p>
   <p class="muted small">Versiones de prueba: pueden tener errores. Android es una marca de Google LLC.</p>
 </footer>
+<dialog class="vj" id="vTierralma" aria-labelledby="vjTitulo">
+  <div class="vj-barra">
+    <img src="img/juegos/tierralma.svg" alt="">
+    <b id="vjTitulo">Tierralma</b>
+    <a class="vj-bajar" data-descarga="tierralma" href="descargas/Tierralma.apk" download>⬇ Descargar</a>
+    <button class="vj-cerrar" type="button" data-cerrar-tl aria-label="Cerrar">✕</button>
+  </div>
+  <div class="vj-cuerpo">
+    <video class="vj-video" poster="tierralma/poster.jpg" muted loop playsinline controls preload="none" aria-label="Video del juego: aldea, bosque de cerezos, bosque oscuro y un castillo">
+      <source src="tierralma/tierralma.webm" type="video/webm">
+      <source src="tierralma/tierralma.mp4" type="video/mp4">
+    </video>
+
+    <section class="vj-sec">
+      <h2>Una isla entera para ti</h2>
+      <p>Despiertas en una isla que se crea al azar para cada partida. Junta madera y piedra, fabrica tus herramientas,
+        come y bebe para no desmayarte y construye una casa antes de que caiga la noche: con la oscuridad salen los zombis.</p>
+      <p>Más allá de tu casa hay aldeas con gente que trabaja, comercia y platica contigo, un gremio de aventureros con
+        misiones y rangos, minas que bajan hasta la lava y mazmorras con jefes. Tú decides si te vuelves granjero,
+        minero, comerciante o aventurero.</p>
+      <ul class="vj-datos">
+        <li><b>174</b><span>objetos</span></li>
+        <li><b>117</b><span>recetas</span></li>
+        <li><b>37</b><span>logros</span></li>
+        <li><b>8</b><span>jefes</span></li>
+      </ul>
+    </section>
+
+    <section class="vj-sec">
+      <h2>Fotos</h2>
+      <div class="vj-fotos">
+        <figure><img src="tierralma/aldea.jpg" alt="" loading="lazy"><figcaption>Aldeas con oficios, comercio y amistades</figcaption></figure>
+        <figure><img src="tierralma/cerezo.jpg" alt="" loading="lazy"><figcaption>Bosque de cerezos: siempre en flor</figcaption></figure>
+        <figure><img src="tierralma/bosque.jpg" alt="" loading="lazy"><figcaption>Bosque oscuro: casi no entra el sol</figcaption></figure>
+        <figure><img src="tierralma/desierto.jpg" alt="" loading="lazy"><figcaption>Desierto: aquí da sed más rápido</figcaption></figure>
+        <figure><img src="tierralma/noche.jpg" alt="" loading="lazy"><figcaption>De noche la aldea se ilumina</figcaption></figure>
+        <figure><img src="tierralma/fabricar.jpg" alt="" loading="lazy"><figcaption>Fabrica a mano o junto a tus estaciones</figcaption></figure>
+        <figure><img src="tierralma/castillo.jpg" alt="" loading="lazy"><figcaption>Castillo abandonado: 4 pisos y un jefe</figcaption></figure>
+        <figure><img src="tierralma/cripta.jpg" alt="" loading="lazy"><figcaption>Cripta: busca la escalera y abre los cofres</figcaption></figure>
+      </div>
+    </section>
+
+    <section class="vj-sec">
+      <h2>Qué puedes hacer</h2>
+      <div class="vj-cosas">
+        <div><i>🏝️</i><b>Explorar</b><small>Pradera, desierto, nieve, pantano, selva, volcán, montaña, bosque oscuro y cerezos. Cada bioma cambia el hambre, la sed y lo que encuentras.</small></div>
+        <div><i>🏠</i><b>Construir</b><small>Pon la bandera de tu terreno, levanta tu casa, amuéblala y siembra, cría animales y guarda todo en cofres.</small></div>
+        <div><i>⚔️</i><b>Pelear</b><small>27 criaturas y 8 jefes. Armaduras que se gastan con el uso y armas de distinta rareza.</small></div>
+        <div><i>⛏️</i><b>Minas y mazmorras</b><small>Minas con pisos escondidos y 5 mazmorras: la del gremio, el castillo, la cripta, la torre de la bruja y la mazmorra trampa.</small></div>
+        <div><i>📜</i><b>Gremio y bitácora</b><small>Misiones del gremio con rangos de F a S+, misiones diarias, 37 logros y eventos de otoño e invierno.</small></div>
+        <div><i>🌦️</i><b>Estaciones y clima</b><small>Día y noche, cuatro estaciones, lluvia (tus cultivos crecen más rápido), tormentas, niebla y nieve.</small></div>
+      </div>
+    </section>
+
+    <section class="vj-sec">
+      <h2>Todos los objetos</h2>
+      <p class="muted">Toca un objeto para ver para qué sirve, cómo se fabrica y dónde encontrarlo. Sale de los datos del juego (versión <span id="vjVersion">—</span>).</p>
+      <div class="vj-filtros">
+        <input id="vjBuscar" type="search" placeholder="Buscar (ej. espada, pan, hierro)" autocomplete="off" aria-label="Buscar objeto">
+        <div class="vj-chips" id="vjGrupos" role="group" aria-label="Categoría"></div>
+        <div class="vj-chips" id="vjRarezas" role="group" aria-label="Rareza"></div>
+      </div>
+      <p class="muted small" id="vjCuenta"></p>
+      <div class="vj-objetos" id="vjObjetos"></div>
+    </section>
+
+    <div class="vj-final">
+      <a class="btn" data-descarga="tierralma" href="descargas/Tierralma.apk" download>⬇ Descargar Tierralma</a>
+      <small data-info="tierralma">Gratis · Android 7 o superior</small>
+    </div>
+  </div>
+</dialog>
+<script src="tierralma/objetos.js"></script>
 <script src="pagina.js"></script>
 </body>
 </html>
