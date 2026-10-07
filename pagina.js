@@ -4,7 +4,7 @@
 const JUEGOS = {
   tierralma: { version: 'de prueba 5', fecha: '2026-10-03', bytes: 16324155, sha256: 'b324a34940cf49303990212e0d9c6d3e475107cbfd77a06bc294483aae7bf79f' },
   grieta: { version: 'de prueba 4', fecha: '2026-10-01', bytes: 5895865, sha256: 'beef7f3d5047b375701d1e0235a9e6368524ec3b5c88068fdcb2971136fb2304' },
-  rompehielo: { version: 'de prueba 1', fecha: '2026-10-07', bytes: 3177920, sha256: '59a6d34865d3483930dfad3bdc03fb619b766a3c3d799f1920d71aa981eb1461' }
+  rompehielo: { version: 'de prueba 2', fecha: '2026-10-07', bytes: 3183524, sha256: '9a7d49dfc299af002e71d1b00e85226608f5aefdad65675506be7314ba01be84' }
 };
 const CONFIG = {
   contacto: '',   // correo para reportar problemas (vacío = no se muestra)
