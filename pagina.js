@@ -1,30 +1,34 @@
 // pagina.js — datos de las descargas de cada juego. Al subir un APK nuevo a descargas/, actualizar aquí
-// la versión, la fecha, el tamaño y la huella (sha256sum descargas/*.apk).
+// la versión, la fecha y el tamaño.
 'use strict';
 const JUEGOS = {
-  tierralma: { version: 'de prueba 6 (sin conexión)', fecha: '2026-10-09', bytes: 20131579, sha256: 'ba4918e7fa49f3bb4516a364c00afa2966a2dd85dd5056c479de54808bfffa50' },
-  grieta: { version: 'de prueba 4', fecha: '2026-10-01', bytes: 5895865, sha256: 'beef7f3d5047b375701d1e0235a9e6368524ec3b5c88068fdcb2971136fb2304' },
-  rompehielo: { version: 'de prueba 3', fecha: '2026-10-07', bytes: 3190912, sha256: '7d3cd833c262fc8db982aea63e35226c29516e77d6323e8406266f8639cd5ac3' }
+  tierralma: { version: 'de prueba 6 (sin conexión)', fecha: '2026-10-09', bytes: 20131579 },
+  grieta: { version: 'de prueba 4', fecha: '2026-10-01', bytes: 5895865 },
+  rompehielo: { version: 'de prueba 3', fecha: '2026-10-07', bytes: 3190912 }
 };
 const CONFIG = {
   contacto: '',   // correo para reportar problemas (vacío = no se muestra)
-  creditos: ''    // por ejemplo «Hecho en México por …» (vacío = texto neutro)
+  creditos: '',   // por ejemplo «Hecho en México por …» (vacío = texto neutro)
+  formularioTesters: ''   // enlace del formulario (Google Forms) para registrar a los beta testers (vacío = «muy pronto»)
 };
 
 const mb = b => (b / 1048576).toLocaleString('es-MX', { maximumFractionDigits: 1 }) + ' MB';
 const fecha = iso => new Date(iso + 'T12:00:00').toLocaleDateString('es-MX', { day: 'numeric', month: 'long', year: 'numeric' });
 for (const [id, j] of Object.entries(JUEGOS)) {
-  const infos = document.querySelectorAll(`[data-info="${id}"]`), huella = document.querySelector(`[data-huella="${id}"]`);
+  const infos = document.querySelectorAll(`[data-info="${id}"]`);
   const partes = [];
   if (j.version) partes.push(`Versión ${j.version}`);
   if (j.fecha) partes.push(`actualizada el ${fecha(j.fecha)}`);
   if (j.bytes) partes.push(mb(j.bytes));
   if (partes.length) for (const info of infos) info.textContent = `${partes.join(' · ')} · gratis · Android 7 o superior`;
-  if (huella && j.sha256) huella.textContent = j.sha256;
 }
 if (CONFIG.contacto) {
   const a = document.createElement('a'); a.href = 'mailto:' + CONFIG.contacto; a.textContent = 'Reportar un problema';
   document.getElementById('contacto').append(' · ', a);
+}
+if (CONFIG.formularioTesters) {
+  const b = document.getElementById('btnBeta'); b.href = CONFIG.formularioTesters; b.hidden = false;
+  document.getElementById('betaAviso').hidden = true;
 }
 if (CONFIG.creditos) document.getElementById('creditos').textContent = CONFIG.creditos;
 

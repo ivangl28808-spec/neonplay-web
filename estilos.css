@@ -136,3 +136,9 @@ body.sin-scroll{overflow:hidden}
 .vj-final{margin-top:26px}
 .vj-final .btn{margin-bottom:6px}.vj-final small{display:block;text-align:center;color:var(--dim)}
 @media (min-width:880px){.vj{height:calc(100% - 40px);border-radius:22px;border:1px solid var(--line)}.vj-cosas{grid-template-columns:1fr 1fr}}
+
+.pronto{display:block;text-align:center;padding:16px 18px;border-radius:16px;background:var(--card2);color:var(--amber);font-weight:800;font-size:18px;border:1px dashed var(--line)}
+.vj-beta{padding:14px;border-radius:16px;background:var(--card);border:1px solid #35E3F044;margin-top:22px}
+.vj-beta h2{margin-top:4px}
+.vj-pasos{margin:0 0 14px;padding-left:20px}.vj-pasos li{margin-bottom:6px}
+.vj-beta .btn[hidden]{display:none}
