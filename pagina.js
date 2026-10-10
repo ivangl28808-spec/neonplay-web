@@ -9,7 +9,7 @@ const JUEGOS = {
 const CONFIG = {
   contacto: '',   // correo para reportar problemas (vacío = no se muestra)
   creditos: '',   // por ejemplo «Hecho en México por …» (vacío = texto neutro)
-  formularioTesters: ''   // enlace del formulario (Google Forms) para registrar a los beta testers (vacío = «muy pronto»)
+  formularioTesters: 'https://forms.gle/9HgQm34yBg6jcNFn9'   // enlace del formulario (Google Forms) para registrar a los beta testers (vacío = «muy pronto»)
 };
 
 const mb = b => (b / 1048576).toLocaleString('es-MX', { maximumFractionDigits: 1 }) + ' MB';
