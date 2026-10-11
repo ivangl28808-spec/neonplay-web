@@ -151,3 +151,6 @@ body.sin-scroll{overflow:hidden}
 .aviso-caja .amigo{padding-top:4px;border-top:1px solid var(--line)}
 .aviso-caja .btn2.suave{border-color:var(--line);color:var(--dim);background:transparent}
 .aviso-caja #avisoAmigo{cursor:pointer;font:inherit;font-weight:700}
+.gran{margin:14px 0 2px;font:700 clamp(24px,7vw,34px)/1.15 var(--fd);color:var(--cyan);text-shadow:0 0 18px #35E3F055}
+.gran-sub{margin:0 0 12px;color:var(--dim);font-size:14px}
+.vj-sec .gran{margin-top:22px}
