@@ -89,6 +89,13 @@ if (CONFIG.creditos) document.getElementById('creditos').textContent = CONFIG.cr
   const cerrar = () => { try { sessionStorage.setItem('avisoBeta', '1'); } catch (e) { /* nada */ } if (a.open) a.close(); };
   a.querySelector('#avisoCerrar').addEventListener('click', cerrar);
   a.querySelector('#avisoForm').addEventListener('click', () => setTimeout(cerrar, 0));
+  const amigo = a.querySelector('#avisoAmigo');
+  amigo.addEventListener('click', async () => {
+    const datos = { title: 'Tierralma · beta testers', text: 'Ayúdame a probar Tierralma, un juego de supervivencia para Android. Buscan testers con Gmail:', url: location.origin + location.pathname };
+    try { if (navigator.share) { await navigator.share(datos); return; } } catch (e) { if (e && e.name === 'AbortError') return; }
+    try { await navigator.clipboard.writeText(`${datos.text} ${datos.url}`); amigo.textContent = '✓ Enlace copiado, pégalo a tu amigo'; }
+    catch (e) { amigo.textContent = 'Copia esta página: ' + datos.url; }
+  });
   a.addEventListener('click', e => { if (e.target === a) cerrar(); });
   a.addEventListener('cancel', cerrar);
   a.showModal();
