@@ -79,3 +79,17 @@ if (CONFIG.creditos) document.getElementById('creditos').textContent = CONFIG.cr
   window.addEventListener('popstate', () => (location.hash === '#tierralma-info' ? abrir(false) : cerrar()));
   if (location.hash === '#tierralma-info') abrir(false);
 })();
+
+// ---------- Primer mensaje al entrar: invitación a ser beta tester ----------
+(() => {
+  const a = document.getElementById('avisoBeta');
+  if (!a || !CONFIG.formularioTesters || location.hash === '#tierralma-info') return;
+  try { if (sessionStorage.getItem('avisoBeta')) return; } catch (e) { /* sin almacenamiento: se muestra */ }
+  a.querySelector('#avisoForm').href = CONFIG.formularioTesters;
+  const cerrar = () => { try { sessionStorage.setItem('avisoBeta', '1'); } catch (e) { /* nada */ } if (a.open) a.close(); };
+  a.querySelector('#avisoCerrar').addEventListener('click', cerrar);
+  a.querySelector('#avisoForm').addEventListener('click', () => setTimeout(cerrar, 0));
+  a.addEventListener('click', e => { if (e.target === a) cerrar(); });
+  a.addEventListener('cancel', cerrar);
+  a.showModal();
+})();
