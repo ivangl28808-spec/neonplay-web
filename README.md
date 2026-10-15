@@ -1,6 +1,6 @@
-# Página de descarga: Tierralma, Grieta y Rompehielo
+# Página de descarga: Tierralma, Grieta y Cartas al Aire
 
-Página pública para descargar **Tierralma**, **Grieta** y **Rompehielo** para Android (gratis, sin cuenta y sin internet).
+Página pública para descargar **Tierralma**, **Grieta** y **Cartas al Aire** (antes Rompehielo) para Android (gratis, sin cuenta y sin internet).
 Se publica con GitHub Pages desde la rama `main`.
 
 - Los APK viven en `descargas/` (el repositorio del juego es privado, por eso se copian aquí).
