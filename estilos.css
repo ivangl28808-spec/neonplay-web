@@ -154,3 +154,8 @@ body.sin-scroll{overflow:hidden}
 .gran{margin:14px 0 2px;font:700 clamp(24px,7vw,34px)/1.15 var(--fd);color:var(--cyan);text-shadow:0 0 18px #35E3F055}
 .gran-sub{margin:0 0 12px;color:var(--dim);font-size:14px}
 .vj-sec .gran{margin-top:22px}
+
+/* Cartas al Aire: mismos bloques que Tierralma, en ámbar */
+.gran.r{color:#F2B84B;text-shadow:0 0 18px #F2B84B55}
+.juego.r .abre-txt{border-color:#F2B84B88}
+.vj.r .vj-bajar,.vj.r .btn{background:#F2B84B;color:#241A05;box-shadow:0 0 24px #F2B84B55}
