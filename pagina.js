@@ -80,10 +80,30 @@ if (CONFIG.creditos) document.getElementById('creditos').textContent = CONFIG.cr
   if (location.hash === '#tierralma-info') abrir(false);
 })();
 
+// ---------- Ventana de Cartas al Aire: fotos y todo lo que trae ----------
+(() => {
+  const v = document.getElementById('vCartas');
+  if (!v) return;
+  const H = '#cartas-info';
+  function abrir(empujar) {
+    if (!v.open) v.showModal();
+    document.body.classList.add('sin-scroll');
+    if (empujar && location.hash !== H) history.pushState({ ca: 1 }, '', H);
+  }
+  function cerrar() { if (v.open) v.close(); document.body.classList.remove('sin-scroll'); }
+  const x = v.querySelector('[data-cerrar-ca]');
+  document.querySelectorAll('[data-abrir-ca]').forEach(a => a.addEventListener('click', e => { e.preventDefault(); abrir(true); }));
+  x.addEventListener('click', () => (history.state && history.state.ca ? history.back() : (cerrar(), history.replaceState(null, '', '#rompehielo'))));
+  v.addEventListener('cancel', e => { e.preventDefault(); x.click(); });
+  v.addEventListener('click', e => { if (e.target === v) x.click(); });
+  window.addEventListener('popstate', () => (location.hash === H ? abrir(false) : cerrar()));
+  if (location.hash === H) abrir(false);
+})();
+
 // ---------- Primer mensaje al entrar: invitación a ser beta tester ----------
 (() => {
   const a = document.getElementById('avisoBeta');
-  if (!a || !CONFIG.formularioTesters || location.hash === '#tierralma-info') return;
+  if (!a || !CONFIG.formularioTesters || location.hash === '#tierralma-info' || location.hash === '#cartas-info') return;
   try { if (sessionStorage.getItem('avisoBeta')) return; } catch (e) { /* sin almacenamiento: se muestra */ }
   a.querySelector('#avisoForm').href = CONFIG.formularioTesters;
   const cerrar = () => { try { sessionStorage.setItem('avisoBeta', '1'); } catch (e) { /* nada */ } if (a.open) a.close(); };
