@@ -9,8 +9,13 @@ const JUEGOS = {
 const CONFIG = {
   contacto: '',   // correo para reportar problemas (vacío = no se muestra)
   creditos: '',   // por ejemplo «Hecho en México por …» (vacío = texto neutro)
-  formularioTesters: 'https://forms.gle/9HgQm34yBg6jcNFn9'   // enlace del formulario (Google Forms) para registrar a los beta testers (vacío = «muy pronto»)
+  formularioTesters: 'https://forms.gle/9HgQm34yBg6jcNFn9',  // enlace del formulario (Google Forms) para registrar a los beta testers (vacío = «muy pronto»)
+  // Prueba con grupo de Google: cada tester entra solo al grupo y queda en la prueba de Play sin copiar correos a mano.
+  // Cuando los dos estén puestos, sustituyen al formulario.
+  grupoTesters: '',   // por ejemplo 'https://groups.google.com/g/tierralma-testers'
+  enlacePrueba: ''    // enlace de prueba de Play: 'https://play.google.com/apps/testing/<paquete de Tierralma>'
 };
+const conGrupo = Boolean(CONFIG.grupoTesters && CONFIG.enlacePrueba);
 
 const mb = b => (b / 1048576).toLocaleString('es-MX', { maximumFractionDigits: 1 }) + ' MB';
 const fecha = iso => new Date(iso + 'T12:00:00').toLocaleDateString('es-MX', { day: 'numeric', month: 'long', year: 'numeric' });
@@ -26,7 +31,15 @@ if (CONFIG.contacto) {
   const a = document.createElement('a'); a.href = 'mailto:' + CONFIG.contacto; a.textContent = 'Reportar un problema';
   document.getElementById('contacto').append(' · ', a);
 }
-if (CONFIG.formularioTesters) {
+if (conGrupo) {
+  document.getElementById('lnkGrupo').href = CONFIG.grupoTesters;
+  document.getElementById('lnkPrueba').href = CONFIG.enlacePrueba;
+  document.getElementById('pasosGrupo').hidden = false;
+  document.getElementById('pasosForm').hidden = true;
+  document.getElementById('betaAviso').hidden = true;
+  document.getElementById('betaPrivacidad').firstChild.textContent =
+    'Tu Gmail queda en el grupo de Google solo para darte acceso a la prueba. Puedes salirte del grupo cuando quieras. ';
+} else if (CONFIG.formularioTesters) {
   const b = document.getElementById('btnBeta'); b.href = CONFIG.formularioTesters; b.hidden = false;
   document.getElementById('betaAviso').hidden = true;
 }
@@ -76,8 +89,15 @@ if (CONFIG.creditos) document.getElementById('creditos').textContent = CONFIG.cr
   v.querySelector('[data-cerrar-tl]').addEventListener('click', () => (history.state && history.state.tl ? history.back() : (cerrar(), history.replaceState(null, '', '#tierralma'))));
   v.addEventListener('cancel', e => { e.preventDefault(); v.querySelector('[data-cerrar-tl]').click(); });
   v.addEventListener('click', e => { if (e.target === v) v.querySelector('[data-cerrar-tl]').click(); });
-  window.addEventListener('popstate', () => (location.hash === '#tierralma-info' ? abrir(false) : cerrar()));
-  if (location.hash === '#tierralma-info') abrir(false);
+  // #tierralma-beta (QR y enlaces para testers) abre la ventana y baja hasta la sección de testers
+  function segunHash() {
+    if (location.hash === '#tierralma-info') abrir(false);
+    else if (location.hash === '#tierralma-beta') { abrir(false); document.getElementById('tierralma-beta').scrollIntoView(); }
+    else cerrar();
+  }
+  window.addEventListener('popstate', segunHash);
+  window.addEventListener('hashchange', segunHash);
+  if (location.hash === '#tierralma-info' || location.hash === '#tierralma-beta') segunHash();
 })();
 
 // ---------- Ventana de Cartas al Aire: fotos y todo lo que trae ----------
@@ -103,15 +123,20 @@ if (CONFIG.creditos) document.getElementById('creditos').textContent = CONFIG.cr
 // ---------- Primer mensaje al entrar: invitación a ser beta tester ----------
 (() => {
   const a = document.getElementById('avisoBeta');
-  if (!a || !CONFIG.formularioTesters || location.hash === '#tierralma-info' || location.hash === '#cartas-info') return;
+  if (!a || !(conGrupo || CONFIG.formularioTesters) || location.hash === '#tierralma-info' || location.hash === '#cartas-info' || location.hash === '#tierralma-beta') return;
   try { if (sessionStorage.getItem('avisoBeta')) return; } catch (e) { /* sin almacenamiento: se muestra */ }
-  a.querySelector('#avisoForm').href = CONFIG.formularioTesters;
+  const boton = a.querySelector('#avisoForm');
+  if (conGrupo) {
+    // los 3 pasos están en la sección de la página: se va allí en vez de a un formulario
+    boton.href = '#tierralma-beta'; boton.removeAttribute('target'); boton.textContent = 'Ver cómo ser tester';
+    a.querySelector('#avisoTexto').textContent = 'Te unes a un grupo de Google con tu Gmail y entras a la prueba al momento, sin esperar a que te agreguemos.';
+  } else boton.href = CONFIG.formularioTesters;
   const cerrar = () => { try { sessionStorage.setItem('avisoBeta', '1'); } catch (e) { /* nada */ } if (a.open) a.close(); };
   a.querySelector('#avisoCerrar').addEventListener('click', cerrar);
   a.querySelector('#avisoForm').addEventListener('click', () => setTimeout(cerrar, 0));
   const amigo = a.querySelector('#avisoAmigo');
   amigo.addEventListener('click', async () => {
-    const datos = { title: 'Tierralma · beta testers', text: 'Ayúdame a probar Tierralma, un juego de supervivencia para Android. Buscan testers con Gmail:', url: location.origin + location.pathname };
+    const datos = { title: 'Tierralma · beta testers', text: 'Ayúdame a probar Tierralma, un juego de supervivencia para Android. Buscan testers con Gmail:', url: location.origin + location.pathname + '#tierralma-beta' };
     try { if (navigator.share) { await navigator.share(datos); return; } } catch (e) { if (e && e.name === 'AbortError') return; }
     try { await navigator.clipboard.writeText(`${datos.text} ${datos.url}`); amigo.textContent = '✓ Enlace copiado, pégalo a tu amigo'; }
     catch (e) { amigo.textContent = 'Copia esta página: ' + datos.url; }

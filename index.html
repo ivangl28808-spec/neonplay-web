@@ -173,17 +173,32 @@
     </section>
 
     <section class="vj-sec vj-beta" id="tierralma-beta">
-      <h2>🧪 Sé beta tester</h2>
+      <h2>🧪 Sé tester de Tierralma</h2>
       <p>Tierralma está en prueba cerrada en Google Play y necesitamos al menos <b>12 personas</b> que lo prueben durante <b>14 días</b>.
         Solo necesitas un celular Android y una cuenta de Gmail.</p>
-      <ol class="vj-pasos">
-        <li>Llena el formulario con tu Gmail.</li>
-        <li>Te agregamos a la lista y recibirás el enlace para unirte desde Google Play.</li>
-        <li>Instálalo (si ya bajaste el APK de esta página, desinstálalo antes) y ábrelo de vez en cuando durante 14 días.</li>
-      </ol>
-      <a class="btn" id="btnBeta" href="#tierralma-beta" target="_blank" rel="noopener" hidden>Quiero ser beta tester</a>
-      <p class="muted small" id="betaAviso">El formulario se abrirá muy pronto. Vuelve en unos días.</p>
-      <p class="muted small">Usamos tu correo solo para agregarte a la prueba de Google Play. Lo borramos al terminar. <a href="privacidad.html">Aviso de privacidad</a></p>
+      <div class="beta-grid">
+        <div>
+          <!-- Con grupo de Google (CONFIG.grupoTesters y CONFIG.enlacePrueba en pagina.js): entras tú solo, sin esperar -->
+          <ol class="vj-pasos" id="pasosGrupo" hidden>
+            <li><b>Únete al grupo</b> con tu Gmail: <a id="lnkGrupo" href="#" target="_blank" rel="noopener">grupo de testers</a>. Es lo que te da acceso a la prueba.</li>
+            <li><b>Abre el enlace de prueba</b> de Google Play con la misma cuenta y acepta unirte a la prueba: <a id="lnkPrueba" href="#" target="_blank" rel="noopener">enlace de prueba</a>.</li>
+            <li><b>Instálalo y no lo desinstales en 14 días.</b> Ábrelo de vez en cuando. Si ya bajaste el APK de esta página, desinstálalo antes.</li>
+          </ol>
+          <!-- Sin grupo todavía: formulario y te agregamos a mano -->
+          <ol class="vj-pasos" id="pasosForm">
+            <li>Llena el formulario con tu Gmail.</li>
+            <li>Te agregamos a la lista y recibirás el enlace para unirte desde Google Play.</li>
+            <li>Instálalo (si ya bajaste el APK de esta página, desinstálalo antes) y ábrelo de vez en cuando durante 14 días.</li>
+          </ol>
+          <a class="btn" id="btnBeta" href="#tierralma-beta" target="_blank" rel="noopener" hidden>Quiero ser beta tester</a>
+          <p class="muted small" id="betaAviso">El formulario se abrirá muy pronto. Vuelve en unos días.</p>
+        </div>
+        <figure class="beta-qr">
+          <img src="img/qr-testers.svg" width="168" height="168" alt="Código QR que abre esta sección para ser tester" loading="lazy">
+          <figcaption class="muted small">¿Estás en la compu? Escanéalo con tu celular.</figcaption>
+        </figure>
+      </div>
+      <p class="muted small" id="betaPrivacidad">Usamos tu correo solo para agregarte a la prueba de Google Play. Lo borramos al terminar. <a href="privacidad.html">Aviso de privacidad</a></p>
     </section>
 
     <section class="vj-sec">
@@ -280,7 +295,7 @@
   <div class="aviso-caja">
     <h2 id="avisoTitulo">🧪 ¡Ayúdanos a probar Tierralma!</h2>
     <p>Buscamos <b>12 beta testers</b> con celular Android y cuenta de Gmail para probar Tierralma en Google Play durante <b>14 días</b>.</p>
-    <p class="muted small">Llena el formulario con tu Gmail y te mandamos el enlace para unirte. Usamos tu correo solo para esto y lo borramos al terminar.</p>
+    <p class="muted small" id="avisoTexto">Llena el formulario con tu Gmail y te mandamos el enlace para unirte. Usamos tu correo solo para esto y lo borramos al terminar.</p>
     <a class="btn" id="avisoForm" href="#" target="_blank" rel="noopener">Quiero ser beta tester</a>
     <p class="amigo">👥 <b>Invita a un amigo:</b> entre más seamos, mejor se prueba.</p>
     <button class="btn2" type="button" id="avisoAmigo">Invitar a un amigo</button>

@@ -142,6 +142,10 @@ body.sin-scroll{overflow:hidden}
 .vj-beta h2{margin-top:4px}
 .vj-pasos{margin:0 0 14px;padding-left:20px}.vj-pasos li{margin-bottom:6px}
 .vj-beta .btn[hidden]{display:none}
+.beta-grid{display:grid;gap:16px;align-items:center}
+.beta-qr{display:none;margin:0;text-align:center}
+.beta-qr img{display:block;width:168px;height:168px;margin:0 auto 6px;padding:8px;border-radius:12px;background:#fff}
+@media (min-width:720px){.beta-grid{grid-template-columns:1fr auto}.beta-qr{display:block}} /* el QR solo sirve en pantallas de compu */
 
 .aviso{width:min(92vw,420px);padding:0;border:1px solid #35E3F066;border-radius:20px;background:var(--bg);color:var(--text);box-shadow:0 0 40px #35E3F044}
 .aviso::backdrop{background:#05030ccc}
