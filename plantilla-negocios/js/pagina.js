@@ -45,6 +45,18 @@ function el(etiqueta, clase, texto) {
   if (texto != null) e.textContent = texto;
   return e;
 }
+// Número de México a 10 dígitos: acepta «55 1234 5678», «+52 55…», «52 1 55…». Si no sale un número válido, ''.
+function numeroMx(texto) {
+  let d = String(texto || '').replace(/\D/g, '');
+  if (d.length === 13 && d.startsWith('521')) d = d.slice(3);
+  else if (d.length === 12 && d.startsWith('52')) d = d.slice(2);
+  return d.length === 10 ? d : '';
+}
+// Error de datos visible arriba de la página, para que se note al revisarla y se corrija antes de entregarla
+function avisoDatos(texto) {
+  const a = el('p', 'aviso-datos', texto);
+  document.body.prepend(a);
+}
 function mostrarAviso(texto) {
   const t = $('toast');
   t.textContent = texto; t.hidden = false;
@@ -89,11 +101,13 @@ function pintar(n) {
   $('lema').textContent = n.lema || '';
   if (n.portada) { $('portadaFoto').src = n.portada; $('portadaFoto').alt = n.portadaTexto || ''; $('portadaFoto').hidden = false; }
 
-  // WhatsApp y teléfono (10 dígitos de México; se antepone 52)
-  const digitos = String(n.whatsapp || '').replace(/\D/g, '');
-  const enlaceWa = digitos.length === 10 ? `https://wa.me/52${digitos}?text=${encodeURIComponent(n.mensajeWhatsApp || `Hola, vi su página de ${n.nombre}.`)}` : '';
+  // WhatsApp y teléfono (número de México; se antepone 52)
+  const digitos = numeroMx(n.whatsapp);
+  const enlaceWa = digitos ? `https://wa.me/52${digitos}?text=${encodeURIComponent(n.mensajeWhatsApp || `Hola, vi su página de ${n.nombre}.`)}` : '';
+  if (!enlaceWa && !n.ejemplo && n.whatsapp) avisoDatos(`Revisa el WhatsApp en negocios/${nombreArchivo}.js: «${n.whatsapp}» no es un número de México de 10 dígitos.`);
   for (const b of [$('btnWhats'), $('waFlotante')]) {
     if (enlaceWa) b.href = enlaceWa;
+    else if (!n.ejemplo) b.hidden = true;   // página real sin WhatsApp: no se muestra el botón
     else {
       // muestra sin número: el botón no lleva a nadie, solo explica lo que hará en la página real
       b.removeAttribute('target');
@@ -101,8 +115,9 @@ function pintar(n) {
     }
   }
   if (n.textoBotonWhatsApp) $('btnWhats').textContent = n.textoBotonWhatsApp;
-  const tel = String(n.telefono || '').replace(/\D/g, '');
-  if (tel.length === 10) { $('btnLlamar').href = `tel:+52${tel}`; $('btnLlamar').hidden = false; }
+  const tel = numeroMx(n.telefono);
+  if (tel) { $('btnLlamar').href = `tel:+52${tel}`; $('btnLlamar').hidden = false; }
+  else if (n.telefono && !n.ejemplo) avisoDatos(`Revisa el teléfono en negocios/${nombreArchivo}.js: «${n.telefono}» no es un número de México de 10 dígitos.`);
 
   // Extras (para llevar, estacionamiento, formas de pago…)
   for (const x of n.extras || []) $('extras').append(el('li', null, x));
@@ -170,9 +185,9 @@ function pintar(n) {
 
   // Pie
   $('pieNombre').textContent = `${n.nombre}${n.ciudad ? ' · ' + n.ciudad : ''}`;
-  for (const [i, r] of (n.redes || []).entries()) {
+  for (const r of n.redes || []) {
     if (!/^https:\/\//.test(r.url)) continue;   // solo enlaces https
-    if (i) $('redes').append(' · ');
+    if ($('redes').childNodes.length) $('redes').append(' · ');
     const a = el('a', null, r.nombre); a.href = r.url; a.target = '_blank'; a.rel = 'noopener';
     $('redes').append(a);
   }
