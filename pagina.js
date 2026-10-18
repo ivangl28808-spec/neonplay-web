@@ -13,7 +13,7 @@ const CONFIG = {
   // Prueba con grupo de Google: cada tester entra solo al grupo y queda en la prueba de Play sin copiar correos a mano.
   // Cuando los dos estén puestos, sustituyen al formulario.
   grupoTesters: '',   // por ejemplo 'https://groups.google.com/g/tierralma-testers'
-  enlacePrueba: ''    // enlace de prueba de Play: 'https://play.google.com/apps/testing/<paquete de Tierralma>'
+  enlacePrueba: 'https://play.google.com/apps/testing/com.neonplay.tierralma'  // enlace de prueba de Play (paquete confirmado por ALMA)
 };
 const conGrupo = Boolean(CONFIG.grupoTesters && CONFIG.enlacePrueba);
 
