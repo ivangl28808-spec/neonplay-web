@@ -11,3 +11,4 @@ Se publica con GitHub Pages desde la rama `main`.
 - `tierralma/`: la ventana del juego (video, fotos, `objetos.js` e `iconos.png`). Los objetos se regeneran desde el repositorio `neonplay` con
   `node scripts/tierralma-objetos-pdf.cjs --web ../neonplay-web/tierralma` (con el juego servido en el puerto 8765).
 - `privacidad.html`: aviso de privacidad de los juegos (el que va en Google Play; actualizado el 3-oct-2026). `legal.html` es el de NEONPLAY, que está en pausa.
+- `match/`: «¿Hacemos match?», el test de compatibilidad de Cartas al Aire (modo Pareja) en versión web. Las preguntas se copian de `COMPAT` en `rompehielo/datos/pareja.js` de `neonplay`.
