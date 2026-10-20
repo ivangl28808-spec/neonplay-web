@@ -1,0 +1,42 @@
+/* ¿Hacemos match?: test de compatibilidad (mismos colores que la página de NEONPLAY) */
+[hidden]{display:none!important}
+:root{--bg:#0E0B1F;--card:#1B1640;--card2:#241C52;--line:#2E2765;--text:#F4F1FF;--dim:#A9A2D3;--pink:#FF3D9A;--amber:#F2B84B;--green:#22C55E;
+  --fd:'Unbounded','Arial Black',system-ui,sans-serif;--fb:'Onest',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;background:radial-gradient(700px 420px at 50% -120px,#8a1f5a66,transparent 70%),var(--bg);color:var(--text);font:16px/1.5 var(--fb);-webkit-text-size-adjust:100%}
+a{color:var(--amber)}
+.caja{width:100%;max-width:520px;margin:0 auto;padding:18px 16px 28px}
+.cab{display:flex;align-items:center;gap:10px;margin-bottom:16px}
+.logo{font-size:30px;line-height:1}
+.nombre{font:700 20px/1 var(--fd)}.nombre b{color:var(--pink);text-shadow:0 0 14px #FF3D9A88}
+.panel{padding:20px 18px;border-radius:22px;background:var(--card);border:1px solid var(--line)}
+.centro{text-align:center}
+h1{font:700 clamp(24px,7vw,32px)/1.15 var(--fd);margin:0 0 10px}
+.sub{color:var(--dim);margin:0 0 16px}
+.nota{color:var(--dim);font-size:13px;text-align:center;margin:12px 0 0}
+.eyebrow{display:block;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);margin-bottom:8px}
+.grande{font:700 clamp(21px,6vw,26px)/1.25 var(--fd);margin:6px 0 18px}
+.campo{display:block;margin-bottom:12px}
+.campo span{display:block;font-weight:700;font-size:14px;margin-bottom:5px}
+.campo input{width:100%;padding:13px 14px;border-radius:14px;border:1px solid var(--line);background:var(--card2);color:var(--text);font:inherit}
+.campo input:focus{outline:2px solid var(--pink);outline-offset:1px}
+.btn,.btn2,.btn3{display:block;width:100%;padding:15px 16px;border-radius:16px;font:800 17px var(--fb);cursor:pointer;margin-top:10px}
+.btn{border:0;background:var(--pink);color:#1C0024;box-shadow:0 0 24px #FF3D9A55}
+.btn2{border:1px solid #FF3D9A77;background:#FF3D9A12;color:#FF9CCB}
+.btn3{border:1px solid var(--line);background:transparent;color:var(--dim);font-weight:600;font-size:15px}
+.btn:active,.btn2:active,.btn3:active,.opciones button:active{transform:scale(.98)}
+.barra{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.cuenta{color:var(--dim);font-size:14px;white-space:nowrap}
+.progreso{height:6px;border-radius:99px;background:var(--card2);overflow:hidden;margin-bottom:14px}
+.progreso i{display:block;height:100%;width:0;background:var(--pink);transition:width .25s}
+.opciones{display:grid;gap:9px}
+.opciones button{padding:14px;border-radius:14px;border:1px solid var(--line);background:var(--card2);color:var(--text);font:600 16px var(--fb);text-align:left;cursor:pointer}
+@media (hover:hover){.opciones button:hover{border-color:#FF3D9A88}}
+.pct{font:700 64px/1 var(--fd);color:var(--pink);text-shadow:0 0 26px #FF3D9A77;margin:6px 0}
+.detalle{margin:18px 0 6px;display:grid;gap:8px}
+.fila{padding:11px 12px;border-radius:14px;background:var(--card2);border:1px solid var(--line)}
+.fila b{display:block;font-size:14.5px}
+.fila span{display:block;color:var(--dim);font-size:14px;margin-top:2px}
+.fila.si{border-color:#22C55E66}.fila.si b::before{content:"✓ ";color:var(--green)}
+.fila.no b::before{content:"✗ ";color:var(--pink)}
+.pie{color:var(--dim);font-size:14px;text-align:center;margin-top:18px}

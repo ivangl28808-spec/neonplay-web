@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>¿Hacemos match? · Test de compatibilidad en pareja</title>
+<meta name="description" content="Test de compatibilidad para dos: contesten 10 preguntas a escondidas en el mismo celular y descubran qué tanto coinciden. Gratis y sin registrarse.">
+<meta name="theme-color" content="#0E0B1F">
+<meta property="og:title" content="¿Hacemos match? · Test de compatibilidad">
+<meta property="og:description" content="10 preguntas, dos personas, un celular. ¿Qué tanto coinciden?">
+<meta property="og:image" content="../img/juegos/rompehielo-3.jpg">
+<meta property="og:locale" content="es_MX">
+<!-- Solo código propio y fuentes de Google; la página no se conecta a ningún servidor ni guarda respuestas -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'">
+<link rel="icon" type="image/png" href="../img/app/favicon-32.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;700&family=Onest:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="match.css">
+</head>
+<body>
+<main class="caja">
+  <header class="cab">
+    <span class="logo" aria-hidden="true">💞</span>
+    <span class="nombre">¿Hacemos <b>match</b>?</span>
+  </header>
+
+  <!-- Inicio -->
+  <section id="vInicio" class="panel">
+    <h1>¿Qué tanto coinciden?</h1>
+    <p class="sub">10 preguntas, dos personas y un solo celular. Cada quien contesta a escondidas y al final ven su porcentaje y en qué no coincidieron.</p>
+    <label class="campo"><span>Persona 1</span><input id="n1" maxlength="20" autocomplete="off" placeholder="Nombre"></label>
+    <label class="campo"><span>Persona 2</span><input id="n2" maxlength="20" autocomplete="off" placeholder="Nombre"></label>
+    <button class="btn" id="empezar" type="button">Empezar</button>
+    <p class="nota">No se guarda nada: las respuestas se borran al cerrar la página.</p>
+  </section>
+
+  <!-- Pasar el celular -->
+  <section id="vPasar" class="panel centro" hidden>
+    <span class="eyebrow">Que nadie más vea la pantalla</span>
+    <p class="grande" id="pasarTxt"></p>
+    <button class="btn" id="listo" type="button">Ya lo tengo</button>
+  </section>
+
+  <!-- Pregunta -->
+  <section id="vPregunta" class="panel" hidden>
+    <div class="barra"><span id="quien" class="eyebrow"></span><span id="cuenta" class="cuenta"></span></div>
+    <div class="progreso"><i id="prog"></i></div>
+    <p class="grande" id="pregunta"></p>
+    <div class="opciones" id="opciones"></div>
+  </section>
+
+  <!-- Resultado -->
+  <section id="vResultado" class="panel" hidden>
+    <div class="centro">
+      <span class="eyebrow" id="resQuien"></span>
+      <div class="pct" id="pct"></div>
+      <p class="grande" id="veredicto"></p>
+      <p class="sub">Es un juego, no una ciencia. Lo más valioso es platicar de en qué no coincidieron.</p>
+    </div>
+    <div id="detalle" class="detalle"></div>
+    <button class="btn" id="otra" type="button">Otras 10 preguntas</button>
+    <button class="btn2" id="compartir" type="button">Compartir resultado</button>
+    <button class="btn3" id="cambiar" type="button">Cambiar nombres</button>
+  </section>
+
+  <footer class="pie">
+    <p>¿Les gustó? Hay más juegos para pareja, amigos y fiesta en <a href="../#rompehielo">Cartas al Aire</a>, gratis para Android.</p>
+  </footer>
+</main>
+<script src="match.js"></script>
+</body>
+</html>
