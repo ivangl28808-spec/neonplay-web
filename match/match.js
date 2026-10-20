@@ -35,10 +35,31 @@ const PREGUNTAS = [
 ];
 const POR_RONDA = 10;
 const $ = id => document.getElementById(id);
-const VISTAS = ['vInicio', 'vPasar', 'vPregunta', 'vResultado'];
+const VISTAS = ['vInicio', 'vLocal', 'vInvitado', 'vMandar', 'vPasar', 'vPregunta', 'vResultado', 'vError'];
 const ver = id => { VISTAS.forEach(v => { $(v).hidden = v !== id; }); window.scrollTo(0, 0); };
+const BASE = location.href.split('#')[0];
 
-let nombres = ['Persona 1', 'Persona 2'], qs = [], resp = [[], []], usadas = [];
+// modo: 'local' (los dos en este celular), 'reto' (contesto y mando el enlace), 'invitado' (abrí un enlace), 'ver' (abrí un resultado)
+let modo = 'local', nombres = ['Persona 1', 'Persona 2'], qs = [], resp = [[], []], usadas = [];
+
+// ---------- Enlaces: los datos van en el «#» de la dirección (no llegan a ningún servidor) ----------
+const cod = o => { const b = new TextEncoder().encode(JSON.stringify(o)); let t = ''; b.forEach(x => { t += String.fromCharCode(x); }); return btoa(t).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, ''); };
+const dec = t => { const s = atob(t.replace(/-/g, '+').replace(/_/g, '/')); return JSON.parse(new TextDecoder().decode(Uint8Array.from(s, c => c.charCodeAt(0)))); };
+const nombreOk = n => typeof n === 'string' && n.trim().length > 0 && n.length <= 20;
+const preguntasOk = q => Array.isArray(q) && q.length >= 1 && q.length <= PREGUNTAS.length && new Set(q).size === q.length && q.every(i => Number.isInteger(i) && i >= 0 && i < PREGUNTAS.length);
+const respOk = (a, q) => Array.isArray(a) && a.length === q.length && a.every((x, k) => Number.isInteger(x) && x >= 0 && x < PREGUNTAS[q[k]][1].length);
+function leerEnlace() {
+  const m = location.hash.match(/^#([tr])=([A-Za-z0-9_-]+)$/);
+  if (!m) return null;
+  try {
+    const o = dec(m[2]);
+    if (m[1] === 't' && nombreOk(o.n) && preguntasOk(o.q) && respOk(o.a, o.q)) return { tipo: 'test', o };
+    if (m[1] === 'r' && Array.isArray(o.n) && o.n.length === 2 && o.n.every(nombreOk) && preguntasOk(o.q)
+      && Array.isArray(o.a) && o.a.length === 2 && o.a.every(a => respOk(a, o.q))) return { tipo: 'res', o };
+  } catch (e) { /* enlace dañado */ }
+  return { tipo: 'error' };
+}
+const whatsapp = texto => { location.href = 'https://wa.me/?text=' + encodeURIComponent(texto); };
 
 // Elige 10 preguntas sin repetir las de rondas anteriores hasta agotar las 30.
 function elegir() {
@@ -57,7 +78,7 @@ function pasar(p) {
 }
 
 function preguntar(p, k) {
-  if (k >= qs.length) { if (p === 0) pasar(1); else resultado(); return; }
+  if (k >= qs.length) { terminar(p); return; }
   const [q, ops] = PREGUNTAS[qs[k]];
   $('quien').textContent = nombres[p] + ', contesta sobre ti';
   $('cuenta').textContent = (k + 1) + ' de ' + qs.length;
@@ -72,6 +93,27 @@ function preguntar(p, k) {
   ver('vPregunta');
 }
 
+function terminar(p) {
+  if (modo === 'local') { if (p === 0) pasar(1); else resultado(); }
+  else if (modo === 'reto') mandar();
+  else resultado();
+}
+
+// ---------- Quien crea el test: mandar el enlace ----------
+let enlaceTest = '';
+function mandar() {
+  enlaceTest = BASE + '#t=' + cod({ n: nombres[0], q: qs, a: resp[0] });
+  $('mandarEyebrow').textContent = '¡Listo, ' + nombres[0] + '!';
+  $('copiado').hidden = true;
+  ver('vMandar');
+}
+$('mandarTest').onclick = () => whatsapp(nombres[0] + ' te retó a ver qué tanto coinciden 💞 Contesta 10 preguntas aquí: ' + enlaceTest);
+$('copiarTest').onclick = async () => {
+  try { await navigator.clipboard.writeText(enlaceTest); $('copiado').hidden = false; }
+  catch (e) { window.prompt('Copia este enlace:', enlaceTest); }
+};
+
+// ---------- Resultado ----------
 let ultimo = 0;
 function resultado() {
   const iguales = qs.filter((_, k) => resp[0][k] === resp[1][k]).length;
@@ -87,18 +129,45 @@ function resultado() {
     const s = document.createElement('span'); s.textContent = si ? 'Los dos: ' + ops[resp[0][k]] : nombres[0] + ': ' + ops[resp[0][k]] + ' · ' + nombres[1] + ': ' + ops[resp[1][k]];
     f.append(b, s); d.append(f);
   });
+  // Quien contestó el enlace le regresa el resultado a quien lo mandó.
+  $('mandarRes').hidden = modo !== 'invitado';
+  $('mandarRes').textContent = 'Mandarle el resultado a ' + nombres[0];
+  $('otra').hidden = modo !== 'local';
   ver('vResultado');
 }
-
-$('empezar').onclick = () => {
-  nombres = [$('n1').value.trim() || 'Persona 1', $('n2').value.trim() || 'Persona 2'];
-  usadas = []; ronda();
+$('mandarRes').onclick = () => {
+  const url = BASE + '#r=' + cod({ n: nombres, q: qs, a: resp });
+  whatsapp('Ya contesté tu test 💞 Salimos ' + ultimo + '% compatibles. Mira en qué coincidimos: ' + url);
 };
-$('otra').onclick = ronda;
-$('cambiar').onclick = () => ver('vInicio');
 $('compartir').onclick = async () => {
-  const url = location.href.split('#')[0];
-  const texto = nombres[0] + ' y ' + nombres[1] + ' tenemos ' + ultimo + '% de compatibilidad en «¿Hacemos match?». ¿Y ustedes?';
-  try { if (navigator.share) { await navigator.share({ title: '¿Hacemos match?', text: texto, url }); return; } } catch (e) { if (e && e.name === 'AbortError') return; }
-  location.href = 'https://wa.me/?text=' + encodeURIComponent(texto + ' ' + url);
+  const texto = nombres[0] + ' y ' + nombres[1] + ' salimos ' + ultimo + '% compatibles en «¿Hacemos match?». ¿Y ustedes?';
+  try { if (navigator.share) { await navigator.share({ title: '¿Hacemos match?', text: texto, url: BASE }); return; } } catch (e) { if (e && e.name === 'AbortError') return; }
+  whatsapp(texto + ' ' + BASE);
 };
+
+// ---------- Botones de inicio ----------
+const inicio = () => { history.replaceState(null, '', BASE); modo = 'local'; ver('vInicio'); };
+$('empezar').onclick = () => { modo = 'reto'; nombres = [$('n1').value.trim() || 'Persona 1', 'Persona 2']; usadas = []; elegir(); resp = [[], []]; preguntar(0, 0); };
+$('local').onclick = () => ver('vLocal');
+$('volver').onclick = () => ver('vInicio');
+$('empezarLocal').onclick = () => { modo = 'local'; nombres = [$('l1').value.trim() || 'Persona 1', $('l2').value.trim() || 'Persona 2']; usadas = []; ronda(); };
+$('otra').onclick = ronda;
+$('nuevo').onclick = inicio;
+$('errNuevo').onclick = inicio;
+
+// ---------- Al abrir la página con un enlace ----------
+function arrancar() {
+  const e = leerEnlace();
+  if (!e) { ver('vInicio'); return; }
+  if (e.tipo === 'error') { ver('vError'); return; }
+  const o = e.o;
+  qs = o.q;
+  if (e.tipo === 'test') {
+    $('invEyebrow').textContent = o.n + ' ya contestó su test';
+    $('invSub').textContent = 'Contesta las mismas ' + o.q.length + ' preguntas sobre ti y descubran qué tanto coinciden.';
+    $('empezarB').onclick = () => { modo = 'invitado'; nombres = [o.n, $('n2').value.trim() || 'Persona 2']; resp = [o.a, []]; preguntar(1, 0); };
+    ver('vInvitado');
+  } else { modo = 'ver'; nombres = o.n; resp = o.a; resultado(); }
+}
+arrancar();
+window.addEventListener('hashchange', arrancar);
