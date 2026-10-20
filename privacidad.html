@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Aviso de privacidad · Tierralma, Grieta y Rompehielo</title>
+<title>Aviso de privacidad · Tierralma, Grieta, Cartas al Aire y tests</title>
 <meta name="theme-color" content="#0E0B1F">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; object-src 'none'; base-uri 'self'; form-action 'none'">
 <link rel="icon" type="image/png" href="img/app/favicon-32.png">
@@ -14,7 +14,7 @@
 <header class="nav wrap"><a class="wordmark" href="index.html" aria-label="Volver a los juegos"><span class="n">NEON</span><span class="p">PLAY</span></a><span class="pill">Juegos · Android</span></header>
 <main class="wrap faq">
   <h1>Aviso de privacidad</h1>
-  <p class="muted small">Última actualización: 9 de octubre de 2026. Aplica a las apps <b>Tierralma</b>, <b>Grieta</b> y <b>Rompehielo</b> para Android.</p>
+  <p class="muted small">Última actualización: 20 de octubre de 2026. Aplica a las apps <b>Tierralma</b>, <b>Grieta</b> y <b>Cartas al Aire</b> (antes Rompehielo) para Android, y a los <a href="#tests">tests para compartir</a> de esta página.</p>
 
   <h2>Resumen</h2>
   <p>No pedimos tu nombre, correo, ubicación ni fotos: tu partida vive en tu teléfono. Solo recibimos lo que tú decides
@@ -72,7 +72,7 @@
     jugar no hace falta. Para «Jugar cerca», Android pide el permiso de
     <b>Dispositivos cercanos</b> (en Android 12 o anterior, Android lo llama <b>ubicación</b>, porque buscar teléfonos por
     Bluetooth lo exige). Se pide solo al tocar «Jugar cerca» y no se usa para saber dónde estás. No usamos cámara,
-    micrófono, contactos, fotos, llamadas ni SMS. Grieta solo usa internet y Rompehielo no usa ningún permiso. Si en el futuro se agrega el chat de voz, el micrófono se pedirá solo
+    micrófono, contactos, fotos, llamadas ni SMS. Grieta solo usa internet. Cartas al Aire usa internet y la ubicación solo si buscas lugares en el Día de exploración (ver abajo). Si en el futuro se agrega el chat de voz, el micrófono se pedirá solo
     al activarlo y este aviso se actualizará antes.</p>
 
   <h2>Publicidad (videos con recompensa)</h2>
@@ -91,9 +91,27 @@
   <h2>Grieta</h2>
   <p>Grieta no envía ningún dato: todo se queda en tu teléfono.</p>
 
-  <h2>Rompehielo</h2>
-  <p>Rompehielo no envía ningún dato y no pide ningún permiso, ni siquiera internet. Tus opciones, los nombres que
-    escribas y la lista de preguntas que ya salieron se guardan solo en tu teléfono; si borras la app, se borran.</p>
+  <h2>Cartas al Aire (antes Rompehielo)</h2>
+  <p>Para jugar no envía ningún dato. Tus opciones, los nombres que escribas y la lista de preguntas que ya salieron se
+    guardan solo en tu teléfono; si borras la app, se borran. Solo si en el <b>Día de exploración</b> tocas «Buscar lugares
+    aquí», la app pide tu <b>ubicación</b> (o usa la ciudad que escribas) y la manda a OpenStreetMap para encontrar lugares
+    cercanos; no la guardamos. Los botones de Google Maps, Facebook e Instagram abren esas apps con una búsqueda, y ahí
+    aplican sus propias reglas de privacidad.</p>
+
+  <h2 id="tests">Tests para compartir («¿Hacemos match?», «¿Qué tanto me conoces?», «¿Somos mejores amigos?»)</h2>
+  <ul>
+    <li><b>Qué guardamos:</b> el nombre que escribes, tus respuestas, qué test es y la fecha. Las respuestas de quien
+      crea el test no se muestran hasta que la otra persona contesta, y el resultado solo lo pueden ver ustedes dos desde
+      el navegador donde lo hicieron (con una llave que se queda en ese navegador).</li>
+    <li><b>Un número al azar del navegador:</b> lo crea la página para contar cuántas personas distintas juegan, junto con
+      el último nombre que usaste y cuántas veces has jugado. No dice quién eres.</li>
+    <li><b>Cuánto tiempo:</b> cada test se borra a los <b>30 días</b>. El conteo de jugadores (número al azar, nombre y
+      cuántas veces jugaste) se queda para saber cuánta gente usa los tests; puedes pedir que lo borremos.</li>
+    <li><b>Dónde:</b> en Supabase (Estados Unidos), con conexión cifrada. No pedimos correo, teléfono ni cuenta, y no lo
+      usamos para publicidad.</li>
+    <li>Si eliges «Jugar los dos en este celular», no se guarda nada en el servidor.</li>
+    <li>Usa solo tu nombre o un apodo: no escribas otros datos personales.</li>
+  </ul>
 
   <h2>Cambios</h2>
   <p>Si este aviso cambia, actualizaremos la fecha de arriba y, si el cambio es importante, lo avisaremos dentro del juego.</p>

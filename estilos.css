@@ -160,3 +160,16 @@ body.sin-scroll{overflow:hidden}
 .juego.r .abre-txt{border-color:#F2B84B88}
 .vj.r .vj-bajar,.vj.r .btn{background:#F2B84B;color:#241A05;box-shadow:0 0 24px #F2B84B55}
 .vj.r .btn2{border-color:#F2B84B77;color:#F2B84B;background:#F2B84B10;margin-top:6px}
+
+/* Tests para compartir (carrusel) */
+.tests h2{margin-top:30px}
+.tests-fila{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 0 8px;margin-top:12px}
+.test-card{flex:none;width:min(58%,230px);scroll-snap-align:start;padding:16px 14px;border-radius:20px;background:var(--card);border:1px solid var(--line);color:var(--text);text-decoration:none}
+.test-card span{display:block;font-size:32px;margin-bottom:8px}
+.test-card b{display:block;font-family:var(--fd);font-size:15px;line-height:1.25}
+.test-card small{display:block;color:var(--dim);font-size:13.5px;margin-top:4px}
+.test-card.m{border-color:#FF3D9A66;background:linear-gradient(160deg,#FF3D9A22,var(--card))}
+.test-card.c{border-color:#35E3F066;background:linear-gradient(160deg,#35E3F01c,var(--card))}
+.test-card.a{border-color:#FFC83D66;background:linear-gradient(160deg,#FFC83D1c,var(--card))}
+.pronto-card{border-style:dashed;opacity:.75}
+@media (min-width:860px){.test-card{width:230px}}
