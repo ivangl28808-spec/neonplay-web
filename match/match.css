@@ -40,3 +40,24 @@ h1{font:700 clamp(24px,7vw,32px)/1.15 var(--fd);margin:0 0 10px}
 .fila.si{border-color:#22C55E66}.fila.si b::before{content:"✓ ";color:var(--green)}
 .fila.no b::before{content:"✗ ";color:var(--pink)}
 .pie{color:var(--dim);font-size:14px;text-align:center;margin-top:18px}
+/* Enlace, espera y mis tests */
+.fila2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.espera{display:flex;align-items:center;justify-content:center;gap:10px;color:var(--dim);margin:16px 0 0;font-weight:600}
+.espera i{width:16px;height:16px;border-radius:50%;border:2px solid var(--line);border-top-color:var(--pink);animation:gira .9s linear infinite}
+@keyframes gira{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.espera i{animation:none}}
+.mios-caja{margin-top:18px}.mios-caja>b{display:block;margin-bottom:8px}
+.mios{display:grid;gap:6px}
+.mio{display:flex;justify-content:space-between;gap:10px;padding:11px 12px;border-radius:14px;background:var(--card2);border:1px solid var(--line);color:var(--text);text-decoration:none;font-size:14.5px}
+.mio-n{font-weight:700}.mio-e{color:var(--dim);text-align:right}.mio-e.ok{color:var(--green);font-weight:700}
+.aviso-ok{display:inline-block;margin:0 0 12px;padding:6px 12px;border-radius:99px;background:#22C55E1f;border:1px solid #22C55E66;color:#86efac;font-weight:700;font-size:14px}
+/* Más juegos */
+.juegos-cta{display:flex;align-items:center;gap:12px;margin:16px 0 4px;padding:14px;border-radius:18px;text-decoration:none;color:var(--text);
+  background:linear-gradient(135deg,#35E3F022,#FF3D9A22);border:1px solid #35E3F066}
+.juegos-cta>span:first-child{font-size:30px}
+.juegos-cta b{display:block;font-size:16px}.juegos-cta small{display:block;color:var(--dim);font-size:13.5px}
+.otros-caja{margin-top:20px}.otros-caja>b{display:block;margin:0 2px 8px;font-family:var(--fd);font-size:16px}
+.otros{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:6px}
+.otro{flex:none;width:min(62%,220px);scroll-snap-align:start;padding:14px;border-radius:18px;background:var(--card);border:1px solid var(--line);color:var(--text);text-decoration:none}
+.otro-i{display:block;font-size:28px;margin-bottom:6px}.otro b{display:block;font-size:15px;line-height:1.25}.otro small{display:block;color:var(--dim);font-size:13px;margin-top:3px}
+.otro.juegos{border-color:#35E3F066;background:linear-gradient(160deg,#35E3F018,var(--card))}

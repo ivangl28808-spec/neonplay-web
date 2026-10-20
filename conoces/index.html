@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>¿Qué tanto me conoces? · Para pareja, amigos o familia</title>
+<meta name="description" content="Contesta 10 preguntas sobre ti, manda el enlace y descubre qué tanto te conocen. Gratis y sin registrarse.">
+<meta name="theme-color" content="#0E0B1F">
+<meta property="og:title" content="¿Qué tanto me conoces?">
+<meta property="og:description" content="¿Qué tanto sabes de su vida? Adivina sus respuestas y descúbrelo.">
+<meta property="og:image" content="../img/juegos/rompehielo-3.jpg">
+<meta property="og:locale" content="es_MX">
+<!-- Generada desde match/plantilla.html con match/paginas.py: no editar a mano -->
+<!-- Solo código propio, fuentes de Google y el servidor de los tests (Supabase) -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src https://yzmbbjcfcqolgmexljny.supabase.co; object-src 'none'; base-uri 'self'; form-action 'none'">
+<link rel="icon" type="image/png" href="../img/app/favicon-32.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;700&family=Onest:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../match/match.css">
+</head>
+<body data-test="conoces">
+<main class="caja">
+  <header class="cab">
+    <span class="logo" aria-hidden="true">🔍</span>
+    <span class="nombre">¿Qué tanto me <b>conoces</b>?</span>
+  </header>
+
+  <!-- Inicio: quien crea el test -->
+  <section id="vInicio" class="panel">
+    <h1>¿De verdad te conocen?</h1>
+    <p class="sub">Contesta 10 preguntas sobre ti y manda el enlace: la otra persona tiene que adivinar qué contestaste.</p>
+    <label class="campo"><span>Tu nombre</span><input id="n1" maxlength="20" autocomplete="off" placeholder="Nombre"></label>
+    <button class="btn" id="empezar" type="button">Empezar mi test</button>
+    <button class="btn3" id="local" type="button">Jugar los dos en este celular</button>
+    <div id="miosCaja" class="mios-caja" hidden>
+      <b>Tus tests</b>
+      <div id="mios" class="mios"></div>
+    </div>
+    <p class="nota">Guardamos tu nombre y tus respuestas 30 días, solo para mostrarles el resultado. <a href="../privacidad.html#tests">Aviso de privacidad</a></p>
+  </section>
+
+  <!-- Los dos en el mismo celular -->
+  <section id="vLocal" class="panel" hidden>
+    <h1>En el mismo celular</h1>
+    <p class="sub">Cada quien contesta a escondidas y al final ven su resultado. Así no se guarda nada.</p>
+    <label class="campo"><span>Quien contesta sobre sí</span><input id="l1" maxlength="20" autocomplete="off" placeholder="Nombre"></label>
+    <label class="campo"><span>Quien adivina</span><input id="l2" maxlength="20" autocomplete="off" placeholder="Nombre"></label>
+    <button class="btn" id="empezarLocal" type="button">Empezar</button>
+    <button class="btn3" id="volver" type="button">Regresar</button>
+  </section>
+
+  <!-- Quien recibe el enlace -->
+  <section id="vInvitado" class="panel" hidden>
+    <span class="eyebrow" id="invEyebrow"></span>
+    <h1>¿De verdad te conocen?</h1>
+    <p class="sub" id="invSub"></p>
+    <label class="campo"><span>Tu nombre</span><input id="n2" maxlength="20" autocomplete="off" placeholder="Nombre"></label>
+    <button class="btn" id="empezarB" type="button">Contestar</button>
+    <p class="nota">No vas a ver sus respuestas hasta que termines. Guardamos tu nombre y respuestas 30 días para mostrarles el resultado. <a href="../privacidad.html#tests">Aviso de privacidad</a></p>
+  </section>
+
+  <!-- Mandar el test -->
+  <section id="vMandar" class="panel centro" hidden>
+    <span class="eyebrow" id="mandarEyebrow"></span>
+    <p class="grande">Ahora mándale tu test</p>
+    <p class="sub" id="mandarSub"></p>
+    <button class="btn" id="mandarTest" type="button">Mandar por WhatsApp</button>
+    <div class="fila2">
+      <button class="btn2" id="otraApp" type="button">Otra app</button>
+      <button class="btn2" id="copiarTest" type="button">Copiar enlace</button>
+    </div>
+    <p class="nota" id="copiado" hidden>Enlace copiado. Pégalo en el chat que quieras.</p>
+    <p class="espera" id="espera" hidden><i></i> Esperando a que conteste…</p>
+  </section>
+
+  <section id="vCargando" class="panel centro" hidden>
+    <p class="espera"><i></i> Un momento…</p>
+  </section>
+
+  <!-- Pasar el celular (modo mismo celular) -->
+  <section id="vPasar" class="panel centro" hidden>
+    <span class="eyebrow">Que nadie más vea la pantalla</span>
+    <p class="grande" id="pasarTxt"></p>
+    <button class="btn" id="listo" type="button">Ya lo tengo</button>
+  </section>
+
+  <!-- Pregunta -->
+  <section id="vPregunta" class="panel" hidden>
+    <div class="barra"><span id="quien" class="eyebrow"></span><span id="cuenta" class="cuenta"></span></div>
+    <div class="progreso"><i id="prog"></i></div>
+    <p class="grande" id="pregunta"></p>
+    <div class="opciones" id="opciones"></div>
+  </section>
+
+  <!-- Resultado -->
+  <section id="vResultado" class="panel" hidden>
+    <div class="centro">
+      <p class="aviso-ok" id="avisoAmbos" hidden></p>
+      <span class="eyebrow" id="resQuien"></span>
+      <div class="pct" id="pct"></div>
+      <p class="grande" id="veredicto"></p>
+      <p class="sub">Es un juego, no una ciencia. Lo más valioso es platicar de en qué no coincidieron.</p>
+    </div>
+    <button class="btn" id="mandarRes" type="button" hidden></button>
+    <a class="juegos-cta" data-raiz href="../">
+      <span>🎮</span><span><b>¿Te gustó? Hay más juegos</b><small>Tierralma, Grieta y Cartas al Aire: conoce los juegos de NEONPLAY</small></span>
+    </a>
+    <div id="detalle" class="detalle"></div>
+    <button class="btn" id="otra" type="button" hidden>Otras 10 preguntas</button>
+    <button class="btn2" id="compartir" type="button">Compartir resultado</button>
+    <button class="btn3" id="nuevo" type="button">Hacer mi propio test</button>
+  </section>
+
+  <section id="vError" class="panel centro" hidden>
+    <p class="grande">Uy</p>
+    <p class="sub" id="errTxt"></p>
+    <button class="btn" id="errReintentar" type="button" hidden>Intentar de nuevo</button>
+    <button class="btn3" id="errNuevo" type="button">Hacer mi propio test</button>
+  </section>
+
+  <section class="otros-caja">
+    <b>Más tests para compartir</b>
+    <div class="otros" data-otros></div>
+  </section>
+
+  <footer class="pie">
+    <p>Hecho por <a data-raiz href="../">NEONPLAY</a> · juegos y apps hechos en México.</p>
+  </footer>
+</main>
+<script src="../match/tests.js"></script>
+<script src="../match/motor.js"></script>
+</body>
+</html>

@@ -26,6 +26,11 @@ if (CONFIG.contacto) {
   const a = document.createElement('a'); a.href = 'mailto:' + CONFIG.contacto; a.textContent = 'Reportar un problema';
   document.getElementById('contacto').append(' · ', a);
 }
+// «Quiero probarlo»: lleva al formulario de testers (las descargas directas se mandan a quien se registra)
+for (const a of document.querySelectorAll('[data-testers]')) {
+  if (CONFIG.formularioTesters) a.href = CONFIG.formularioTesters;
+  else { a.removeAttribute('target'); a.textContent = '🚧 Muy pronto'; a.setAttribute('aria-disabled', 'true'); }
+}
 if (CONFIG.formularioTesters) {
   const b = document.getElementById('btnBeta'); b.href = CONFIG.formularioTesters; b.hidden = false;
   document.getElementById('betaAviso').hidden = true;
