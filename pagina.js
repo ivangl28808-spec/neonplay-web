@@ -2,7 +2,7 @@
 // la versión, la fecha y el tamaño.
 'use strict';
 const JUEGOS = {
-  tierralma: { version: 'de prueba 6 (sin conexión)', fecha: '2026-10-09', bytes: 20131579 },
+  tierralma: { version: 'de prueba 7 (0.9.1, sin conexión)', fecha: '2026-10-18', bytes: 20135047 },
   grieta: { version: 'de prueba 4', fecha: '2026-10-01', bytes: 5895865 },
   rompehielo: { version: 'de prueba 0.15.0', fecha: '2026-10-15', bytes: 4058671 }
 };
