@@ -4,7 +4,7 @@
 const JUEGOS = {
   tierralma: { version: 'de prueba 6 (sin conexión)', fecha: '2026-10-09', bytes: 20131579 },
   grieta: { version: 'de prueba 4', fecha: '2026-10-01', bytes: 5895865 },
-  rompehielo: { version: 'de prueba 0.15.0', fecha: '2026-10-15', bytes: 4058671 }
+  rompehielo: { version: 'de prueba 0.16.0', fecha: '2026-10-27', bytes: 4063019 }
 };
 const CONFIG = {
   contacto: '',   // correo para reportar problemas (vacío = no se muestra)
