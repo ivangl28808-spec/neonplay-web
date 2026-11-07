@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>SPACE Y · Juego online de NEONPLAY</title>
+<meta name="description" content="Esquiva los bloques neón con tu nave. Juego gratis en el navegador, sin descargar nada.">
+<meta name="theme-color" content="#0B0014">
+<!-- Solo código propio; el récord se guarda en el navegador y no se envía a ningún servidor -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'">
+<link rel="icon" type="image/png" href="../../img/app/favicon-32.png">
+<link rel="stylesheet" href="juego.css">
+</head>
+<body>
+<canvas id="c"></canvas>
+<div id="hud"><span class="p" id="puntos">0</span><span class="r" id="record">Récord 0</span></div>
+<div id="pantalla">
+  <h1>SPACE Y</h1>
+  <p id="msg">Arrastra el dedo para mover la nave y esquiva los bloques. Cada 10 segundos caen más rápido.</p>
+  <button id="jugar">Jugar</button>
+  <a id="volver" href="../../#online">← Más juegos en NEONPLAY</a>
+</div>
+<script src="juego.js"></script>
+</body>
+</html>
