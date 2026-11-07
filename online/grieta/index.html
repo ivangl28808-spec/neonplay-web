@@ -705,7 +705,7 @@
         inicio: [
           { fade: 0, f: 50 },
           { banner: 'CIUDAD CORRUPTA', sub: 'DISTRITO 9 - MEDIANOCHE', f: 110 },
-          { say: 'KAREN (RADIO)', text: 'Te escucho. El creador de la grieta va por los techos, justo delante de ti.' },
+          { say: 'KAREN (RADIO)', text: 'Logan, te escucho. El creador de la grieta va por los techos, justo delante de ti.' },
           { say: 'KAREN (RADIO)', text: 'Es nuestra oportunidad. Atrápalo antes de que desaparezca otra vez.' },
           { say: 'KAREN (RADIO)', text: d => 'Salta con ' + d.k('jump') + '. Golpea con ' + d.k('attack') + '.' }
         ],
@@ -715,8 +715,9 @@
         6: [{ say: 'KAREN (RADIO)', text: 'Ese puente está podrido. No te detengas encima.' }],
         4: [
           { pose: 'reposo' },
-          { say: '???', text: 'Llegaste lejos, espía.' },
-          { say: 'TÚ', text: 'Se acabó. Vienes conmigo.' },
+          { say: '???', text: 'Llegaste lejos, Logan. Más lejos que en los otros mundos.' },
+          { say: 'LOGAN', text: '¿Otros mundos? ¿De qué hablas?' },
+          { say: 'LOGAN', text: 'Da igual. Se acabó: vienes conmigo.' },
           { say: '???', text: '¿Contigo? No... Tú vienes conmigo.' },
           { grieta: true, f: 70 }, { shake: 8 },
           { say: 'KAREN (RADIO)', text: '¡¿Qué es eso?! ¡Sal de ahí, ya!' },
@@ -734,21 +735,25 @@
       guion: {
         inicio: [
           { fade: 1, color: '#ffffff' }, { pose: 'agachar' }, { fade: 0, f: 70, color: '#ffffff' }, { wait: 40 },
-          { say: 'TÚ', text: '¿Dónde... estoy?' },
+          { say: 'LOGAN', text: '¿Dónde... estoy?' },
           { pose: null },
-          { say: 'KAREN (RADIO)', text: '...me escuchas? ...la señal... está muy débil...' },
-          { say: 'TÚ', text: 'Karen. Perdí el equipo al cruzar esa cosa. No tengo ni la espada.' },
+          { say: 'KAREN (RADIO)', text: '...Logan... ¿me escuchas? ...la señal... está muy débil...' },
+          { say: 'LOGAN', text: 'Karen. Perdí el equipo al cruzar esa cosa. No tengo ni la espada.' },
           { say: 'KAREN (RADIO)', text: '...busca... la grieta te... *estática*' },
           { banner: 'BOSQUE', sub: 'DONDE TE ESCUPIÓ LA GRIETA', f: 110 }
         ],
-        2: [{ say: 'TÚ', text: 'Algo brilla allá arriba. No alcanzo... todavía.' }],
+        2: [{ say: 'LOGAN', text: 'Algo brilla allá arriba. No alcanzo... todavía.' }],
         3: d => d.save.abilities.sword ? [
           { karen: true },
-          { say: 'KAREN', text: '¡Eres tú! Yo también caí por la grieta cuando se abrió.' },
+          { say: 'KAREN', text: '¡Logan! Yo también caí por la grieta cuando se abrió.' },
+          { say: 'LOGAN', text: 'Dijo que llegué más lejos que en los otros mundos. Como si ya me conociera.' },
+          { say: 'KAREN', text: 'Luego lo pensamos. Primero salgamos de aquí.' },
           { say: 'KAREN', text: d2 => '¿Y esa espada? Perfecto. Corta esas enredaderas con ' + d2.k('attack') + '.' }
         ] : [
           { karen: true },
-          { say: 'KAREN', text: '¡Eres tú! Yo también caí por la grieta cuando se abrió.' },
+          { say: 'KAREN', text: '¡Logan! Yo también caí por la grieta cuando se abrió.' },
+          { say: 'LOGAN', text: 'Dijo que llegué más lejos que en los otros mundos. Como si ya me conociera.' },
+          { say: 'KAREN', text: 'Luego lo pensamos. Primero salgamos de aquí.' },
           { say: 'KAREN', text: 'Estas enredaderas cierran el camino. Sin una espada no vas a pasar.' },
           { say: 'KAREN', text: 'Vi algo brillar bajo tierra. Hay un hueco en el camino, más atrás.' },
           { say: 'KAREN', text: 'Te espero aquí. No tardes.' }
@@ -756,12 +761,13 @@
         habilidad: [
           { give: 'sword' },
           { banner: 'OBTUVISTE: ESPADA', sub: '', f: 100 },
-          { say: 'TÚ', text: 'No es la mía, pero corta.' },
-          { say: 'TÚ', text: d => d.k('attack') + ' golpea. Arriba + ' + d.k('attack') + ' golpea hacia arriba.' }
+          { say: 'LOGAN', text: 'No es la mía, pero corta.' },
+          { say: 'LOGAN', text: d => d.k('attack') + ' golpea. Arriba + ' + d.k('attack') + ' golpea hacia arriba.' }
         ],
         vida: [{ banner: 'FRAGMENTO DE VIDA', sub: 'JUNTA 4 PARA UN CORAZÓN MÁS', f: 110 }],
         meta: [
           { say: 'KAREN', text: 'Por aquí baja una cueva. El rastro del creador sigue adentro.' },
+          { say: 'LOGAN', text: 'Entonces vamos. Quiero saber qué sabe de mí.' },
           { fade: 1, color: '#000000', f: 50 },
           { banner: 'FIN DEL DEMO', sub: 'CONTINUARÁ: CUEVAS PROFUNDAS', f: 100000 }
         ]
