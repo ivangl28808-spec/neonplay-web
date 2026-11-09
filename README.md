@@ -17,3 +17,10 @@ Se publica con GitHub Pages desde la rama `main`.
   `neonplay`; si el servidor no responde, el test viaja dentro del enlace. Conteo de jugadores: `select * from private.match_conteo();`.
 - Las descargas directas ya no se muestran: «Quiero probarlo» lleva al formulario de testers (`formularioTesters` en `pagina.js`)
   y los APK de `descargas/` se mandan por enlace a quien se registra.
+
+## Animador (app de animación, uso personal)
+
+- Página: `animador/` (sin enlace desde el inicio; `noindex`). APK en `descargas/Animador.apk` y ficha en `descargas/animador.json`.
+- La ficha la lee el botón «Buscar actualización» de la app: `versionCode` tiene que ser el número de compilación del APK
+  (sale en el asset `Animador-version.json` del Release `animador` del repositorio `apps_personales`).
+- Al publicar una versión nueva: reemplazar el APK y actualizar `versionCode`, `version`, `fecha`, `bytes`, `sha256` y `notas` en la ficha.

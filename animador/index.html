@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Animador · Descargar para Android</title>
+<meta name="description" content="Animador: animación 2D cuadro por cuadro, pixel art, marionetas con huesos, esculpir y animar en 3D. Descarga la última versión para Android.">
+<meta name="theme-color" content="#0b1018">
+<meta name="robots" content="noindex">
+<!-- Solo código propio y fuentes de Google -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'">
+<link rel="icon" type="image/png" href="../img/app/favicon-32.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;700&family=Onest:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="animador.css">
+</head>
+<body>
+<main class="caja">
+  <header class="cab">
+    <span class="logo" aria-hidden="true">✏️</span>
+    <div>
+      <h1>Animador</h1>
+      <p class="sub">Animación 2D, pixel art, marionetas y 3D en el móvil</p>
+    </div>
+  </header>
+
+  <section class="tarjeta">
+    <p class="estado" id="estado">Buscando la última versión…</p>
+    <p class="datos" id="datos"></p>
+    <a class="btn" id="descargar" href="../descargas/Animador.apk" download>Descargar el APK</a>
+    <p class="nota">Ábrelo en el teléfono e instálalo <b>encima</b> de la versión que tienes: tus proyectos se conservan.
+      Si Android lo pide, permite «instalar apps de este origen».</p>
+  </section>
+
+  <section class="tarjeta" id="novedadesCaja" hidden>
+    <h2>Novedades</h2>
+    <ul id="novedades"></ul>
+  </section>
+
+  <section class="tarjeta">
+    <h2>Qué tiene</h2>
+    <ul>
+      <li><b>Cuadro por cuadro</b>: 19 pinceles, capas, papel cebolla, texto, rotoscopia y plantillas.</li>
+      <li><b>Pixel art</b>: paletas, sombreado, trama, tiles y exportación nítida para juegos.</li>
+      <li><b>Marioneta</b>: esqueletos listos, IK y movimientos automáticos.</li>
+      <li><b>3D</b>: esculpir desde cero, ponerle huesos, poses, animar y exportar a GLB, OBJ o STL.</li>
+    </ul>
+  </section>
+
+  <p class="pie">Android 7 o superior · uso personal · <a href="../">Volver a la web</a></p>
+</main>
+<script src="animador.js"></script>
+</body>
+</html>

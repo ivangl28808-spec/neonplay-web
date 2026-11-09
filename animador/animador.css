@@ -1,0 +1,19 @@
+:root { --bg: #0b1018; --panel: #141c2a; --linea: #26324a; --fg: #eef3fb; --dim: #93a3bd; --acento: #ff8a4c; --acento2: #5cc8ff; }
+* { box-sizing: border-box; }
+body { margin: 0; background: radial-gradient(600px 340px at 90% -120px, #5cc8ff22, transparent 70%), radial-gradient(520px 320px at -10% 8%, #ff8a4c1a, transparent 70%), var(--bg);
+  color: var(--fg); font-family: Onest, system-ui, sans-serif; line-height: 1.5; min-height: 100vh; }
+.caja { max-width: 560px; margin: 0 auto; padding: 28px 16px 40px; display: flex; flex-direction: column; gap: 16px; }
+.cab { display: flex; align-items: center; gap: 14px; }
+.logo { font-size: 2.2rem; width: 60px; height: 60px; display: grid; place-items: center; border-radius: 18px; background: var(--panel); border: 1px solid var(--linea); }
+h1 { font-family: Unbounded, sans-serif; margin: 0; font-size: 1.6rem; }
+h2 { font-family: Unbounded, sans-serif; margin: 0 0 8px; font-size: 1rem; }
+.sub { margin: 2px 0 0; color: var(--dim); }
+.tarjeta { background: var(--panel); border: 1px solid var(--linea); border-radius: 20px; padding: 18px; }
+.estado { margin: 0; font-weight: 700; font-size: 1.15rem; }
+.datos { margin: 2px 0 14px; color: var(--dim); font-size: .9rem; }
+.datos:empty { display: none; }
+.btn { display: block; text-align: center; padding: 15px; border-radius: 15px; background: linear-gradient(180deg, #ffa27a, var(--acento)); color: #1b0b03; font-weight: 700; text-decoration: none; font-size: 1.05rem; margin-top: 10px; }
+.nota { color: var(--dim); font-size: .85rem; margin: 12px 0 0; }
+ul { margin: 0; padding-left: 20px; } li { margin: 4px 0; }
+.pie { text-align: center; color: var(--dim); font-size: .82rem; }
+a { color: var(--acento2); }
