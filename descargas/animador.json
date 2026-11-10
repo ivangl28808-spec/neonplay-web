@@ -1,13 +1,13 @@
 {
- "versionCode": 29904430,
- "version": "1.12.29904430",
- "fecha": "2026-11-09",
- "bytes": 10682013,
- "sha256": "06917e8f1ba74e0c1d44e9b4b50a79da14720842b96be776eeec4c38f83e83b7",
+ "versionCode": 29904525,
+ "version": "1.13.29904525",
+ "fecha": "2026-11-10",
+ "bytes": 10691184,
+ "sha256": "107b95c0f1e5ada3cbaeb3a9b7deb72717635eeafa4e80fae4fc0f12a5fe6c56",
  "notas": [
-  "Botón «Buscar actualización» en Ajustes (y aviso automático una vez al día)",
-  "Optimizar modelo: menos triángulos conservando huesos, pesos y texturas",
-  "Exportar desde el editor 3D: GLB animado, Modelo GLB, OBJ y STL",
-  "Abre OBJ y GLB en el editor 3D y en Esculpir"
+  "Cara expresiva: la app crea formas faciales (sonrisa, cejas, ojos, mandíbula) en tus modelos",
+  "Expresiones listas: alegría, tristeza, enojo, sorpresa, miedo",
+  "Boca que habla: automática o siguiendo el volumen de un audio, y parpadeos",
+  "Físicas: pelo, colas, ropa y orejas con inercia, peso y rebote"
  ]
 }
