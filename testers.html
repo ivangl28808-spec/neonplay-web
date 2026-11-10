@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sé tester · Tierralma y Grieta</title>
+<meta name="theme-color" content="#0E0B1F">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; object-src 'none'; base-uri 'self'; form-action 'none'">
+<link rel="icon" type="image/png" href="img/app/favicon-32.png">
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;700&family=Onest:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="estilos.css">
+<style>
+body{background:radial-gradient(800px 460px at 50% -140px,#3a1f8a66,transparent 70%),var(--bg)}
+.formulario{max-width:680px;margin:0 auto}
+.campo{margin-bottom:20px;display:grid;gap:6px}
+.campo label{font-weight:600;color:var(--text);font-size:14px}
+.campo input,.campo textarea,.campo select{width:100%;padding:11px 14px;border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--text);font:16px var(--fb);box-sizing:border-box}
+.campo textarea{resize:vertical;min-height:100px;font-family:var(--fb)}
+.campo input:focus,.campo textarea:focus,.campo select:focus{outline:none;border-color:var(--cyan);background:var(--card2)}
+.campo small{color:var(--dim);font-size:13px}
+.juegos{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.juegos label{display:flex;align-items:center;gap:8px;padding:10px 12px;border-radius:12px;background:var(--card);border:1px solid var(--line);cursor:pointer;font-weight:500;margin:0}
+.juegos label input{width:18px;height:18px;cursor:pointer;margin:0}
+.juegos label:hover{border-color:var(--cyan);background:var(--card2)}
+.enviar{display:grid;gap:12px}
+.btn-enviar{padding:14px;border-radius:14px;background:var(--cyan);color:#00222A;font-weight:700;font-size:16px;border:none;cursor:pointer}
+.btn-enviar:hover{filter:brightness(1.08)}
+.info{padding:12px 14px;border-radius:12px;background:var(--card);border:1px solid var(--line);color:var(--dim);font-size:14px;margin-bottom:20px}
+.exito{padding:14px;border-radius:12px;background:#22C55E22;border:1px solid #22C55E55;color:#22C55E;text-align:center;display:none}
+@media (max-width:500px){.juegos{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header class="nav wrap"><a class="wordmark" href="index.html"><span class="n">NEON</span><span class="p">PLAY</span></a><span class="pill">Testers</span></header>
+<main class="wrap formulario">
+  <section style="margin-top:32px;margin-bottom:36px;text-align:center">
+    <h1>Prueba los juegos antes que nadie.</h1>
+    <p class="lead" style="color:var(--dim);margin:12px 0 0">Ayudanos a encontrar errores y mejorar Tierralma y Grieta.</p>
+  </section>
+
+  <div class="info">
+    📱 Recibirás versiones adelantadas de los juegos y reportarás bugs, errores visuales o cosas raras que encuentres.
+  </div>
+
+  <form id="formularioTesters" style="display:grid;gap:28px">
+    <fieldset style="border:none;padding:0;margin:0">
+      <legend style="font-weight:700;margin-bottom:12px;color:var(--text)">Datos personales</legend>
+
+      <div class="campo">
+        <label for="nombre">Nombre completo *</label>
+        <input type="text" id="nombre" name="nombre" required>
+      </div>
+
+      <div class="campo">
+        <label for="email">Correo *</label>
+        <input type="email" id="email" name="email" required>
+        <small>Aquí recibirás los APK nuevos y actualizaciones.</small>
+      </div>
+
+      <div class="campo">
+        <label for="telefono">Teléfono (opcional)</label>
+        <input type="tel" id="telefono" name="telefono">
+        <small>Por si necesitamos contactarte de otra forma.</small>
+      </div>
+    </fieldset>
+
+    <fieldset style="border:none;padding:0;margin:0">
+      <legend style="font-weight:700;margin-bottom:12px;color:var(--text)">Tu teléfono</legend>
+
+      <div class="campo">
+        <label for="modelo">Modelo del teléfono *</label>
+        <input type="text" id="modelo" name="modelo" placeholder="Ej: Samsung Galaxy A13" required>
+      </div>
+
+      <div class="campo">
+        <label for="android">Versión de Android *</label>
+        <input type="text" id="android" name="android" placeholder="Ej: Android 12" required>
+        <small>Puedes verla en Ajustes > Información del teléfono.</small>
+      </div>
+    </fieldset>
+
+    <fieldset style="border:none;padding:0;margin:0">
+      <legend style="font-weight:700;margin-bottom:12px;color:var(--text)">¿Cuál quieres probar? *</legend>
+      <div class="juegos">
+        <label><input type="checkbox" name="juego" value="tierralma"> 🌿 Tierralma</label>
+        <label><input type="checkbox" name="juego" value="grieta"> 🎮 Grieta</label>
+      </div>
+      <small style="color:var(--dim);display:block;margin-top:8px">Puedes elegir uno o los dos.</small>
+    </fieldset>
+
+    <fieldset style="border:none;padding:0;margin:0">
+      <legend style="font-weight:700;margin-bottom:12px;color:var(--text)">Experiencia (opcional)</legend>
+
+      <div class="campo">
+        <label for="experiencia">¿Has probado betas o reportado bugs antes?</label>
+        <textarea id="experiencia" name="experiencia" placeholder="Por ejemplo: he reportado bugs en otros juegos, tengo experiencia con testing, etc."></textarea>
+      </div>
+    </fieldset>
+
+    <fieldset style="border:none;padding:0;margin:0">
+      <legend style="font-weight:700;margin-bottom:12px;color:var(--text)">¿Por qué quieres ser tester?</legend>
+
+      <div class="campo">
+        <textarea id="motivacion" name="motivacion" placeholder="Cuéntanos qué te llama de estos juegos y por qué quieres ayudar." required></textarea>
+      </div>
+    </fieldset>
+
+    <div class="exito" id="msj-exito">✓ Gracias por tu interés. Te contactaremos pronto con las instrucciones.</div>
+
+    <div class="enviar">
+      <button type="submit" class="btn-enviar">Enviar solicitud</button>
+      <small style="color:var(--dim);text-align:center">Los datos se enviarán por correo. Nos contactaremos en 1-2 días.</small>
+    </div>
+  </form>
+
+  <div style="margin-top:48px;padding:14px;border-radius:14px;background:var(--card);border:1px solid var(--line)">
+    <p style="margin:0;color:var(--dim);font-size:14px"><b>¿Preguntas?</b> Escribe a <code style="background:var(--card2);padding:2px 6px;border-radius:4px">ivangl28808@gmail.com</code></p>
+  </div>
+</main>
+
+<footer class="foot wrap" style="margin-top:48px"><p class="muted small">Sé parte del desarrollo de Tierralma y Grieta.</p></footer>
+
+<script>
+const form = document.getElementById('formularioTesters');
+const msj = document.getElementById('msj-exito');
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+
+  const nombre = document.getElementById('nombre').value;
+  const email = document.getElementById('email').value;
+  const juegos = Array.from(document.querySelectorAll('[name="juego"]:checked')).map(x => x.value).join(', ');
+
+  if (!juegos) {
+    alert('Elige al menos un juego para probar.');
+    return;
+  }
+
+  const datos = {
+    nombre: nombre,
+    email: email,
+    telefono: document.getElementById('telefono').value,
+    modelo: document.getElementById('modelo').value,
+    android: document.getElementById('android').value,
+    juegos: juegos,
+    experiencia: document.getElementById('experiencia').value,
+    motivacion: document.getElementById('motivacion').value
+  };
+
+  // Aquí se enviaría a tu backend o servicio de email
+  // Por ahora, simulamos el envío
+  console.log('Formulario enviado:', datos);
+
+  // Mostrar mensaje de éxito
+  form.style.display = 'none';
+  msj.style.display = 'block';
+
+  // Scroll al mensaje
+  msj.scrollIntoView({ behavior: 'smooth' });
+
+  // Opcional: enviar por email usando un servicio como Formspree, EmailJS, etc.
+  // await fetch('https://formspree.io/f/YOUR_FORM_ID', {
+  //   method: 'POST',
+  //   headers: { 'Content-Type': 'application/json' },
+  //   body: JSON.stringify(datos)
+  // });
+});
+</script>
+</body>
+</html>
