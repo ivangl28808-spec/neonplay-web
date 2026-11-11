@@ -1,13 +1,13 @@
 {
- "versionCode": 29906286,
- "version": "1.15.29906286",
+ "versionCode": 29906311,
+ "version": "1.15.29906311",
  "fecha": "2026-11-11",
- "bytes": 27115269,
- "sha256": "a4a2e32ac80745bff5e5a450ebb93491aeb209a010fa7c295330d0c435e00186",
+ "bytes": 27115696,
+ "sha256": "fdbbd5a0894d5227886e690947afcae1f5b125b6efd264f9ab859bc6c4bba66b",
  "notas": [
-  "Movimiento de vídeo más natural: pies que no se levantan ni resbalan y muñecas sin torcerse",
-  "Análisis del vídeo el doble de rápido",
-  "App más ligera",
+  "Movimiento de vídeo más natural: muñecas que ya no se tuercen y pies que no resbalan",
+  "Probado con vueltas completas, sentadillas y saltitos",
+  "Análisis del vídeo el doble de rápido y app más ligera",
   "Manos y dedos, y brazos que no atraviesan el cuerpo"
  ]
 }
