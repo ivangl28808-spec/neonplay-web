@@ -1,13 +1,13 @@
 {
- "versionCode": 29906131,
- "version": "1.15.29906131",
+ "versionCode": 29906223,
+ "version": "1.15.29906223",
  "fecha": "2026-11-11",
- "bytes": 23320061,
- "sha256": "9037a99751cfc4b906b4e53e8340f9a278d9ca346a7ab3489858982fa41aa3ef",
+ "bytes": 29179414,
+ "sha256": "f656c2231b982b83bee0290805b69f38aa995c1115524e6e5879d08976d74860",
  "notas": [
-  "Copia el movimiento de un vídeo: grábate y la app anima el esqueleto de tu modelo (sin internet)",
-  "Huesos de pelo: pinta el pelo, traza mechones y la app crea huesos, pesos y físicas",
-  "Físicas de pelo más sueltas y visibles",
-  "Cara expresiva, boca que habla y parpadeos"
+  "Copia el movimiento de un vídeo: cuerpo, muñecas y dedos, sin internet",
+  "Los brazos ya no atraviesan el cuerpo y el movimiento tiembla mucho menos",
+  "Rodillas y puñetazos hacia la cámara mejor captados",
+  "Huesos de pelo y físicas de pelo más visibles"
  ]
 }
