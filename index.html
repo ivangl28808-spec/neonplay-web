@@ -151,6 +151,9 @@
   .d-body{padding:6px 22px 24px}
   .d-main{border-radius:16px;overflow:hidden;border:1px solid var(--line);aspect-ratio:1560/720;background:var(--bg2)}
   .d-main img{width:100%;height:100%;object-fit:cover}
+  .d-main video{width:100%;height:100%;object-fit:contain;background:#000;display:block}
+  .thumbs button{position:relative}
+  .thumbs .play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.4);color:#fff;font-size:18px}
   .d-main .slot{border:none}
   .thumbs{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
   .thumbs button{border:2px solid var(--line);border-radius:10px;padding:0;overflow:hidden;width:86px;height:52px;cursor:pointer;background:var(--bg2)}
@@ -378,7 +381,6 @@ function iconoLetra(fondo, svg){
 }
 var ICO = {
   animador: iconoLetra('#20304d','<path d="M355 92l65 65L178 399l-92 23 23-92z" fill="#ffc53d"/><path d="M330 117l65 65" stroke="#20304d" stroke-width="18"/><path d="M109 330l40 40" stroke="#20304d" stroke-width="14"/>'),
-  cuarentena: iconoLetra('#123528','<circle cx="256" cy="256" r="52" fill="#3ddc84"/><g stroke="#3ddc84" stroke-width="34" stroke-linecap="round"><path d="M256 108v56M256 348v56M108 256h56M348 256h56M151 151l40 40M321 321l40 40M361 151l-40 40M191 321l-40 40"/></g>'),
   chat: iconoLetra('#3a1450','<path d="M96 110h320v218H236l-84 74v-74H96z" fill="#ff3d9a"/><circle cx="176" cy="219" r="24" fill="#fff"/><circle cx="256" cy="219" r="24" fill="#fff"/><circle cx="336" cy="219" r="24" fill="#fff"/>'),
   spacey: iconoLetra('#0b1030','<path d="M256 66l86 300-86-62-86 62z" fill="#35e3f0"/><circle cx="256" cy="212" r="30" fill="#0b1030"/><path d="M150 402l-32 44M362 402l32 44M256 380v66" stroke="#ff3d9a" stroke-width="26" stroke-linecap="round"/>'),
   conoces: iconoLetra('#40260e','<text x="256" y="345" font-size="300" font-family="Arial,sans-serif" font-weight="bold" fill="#ffc53d" text-anchor="middle">?</text>'),
@@ -432,14 +434,16 @@ var APPS = [
     info:{'Versión':'1.13.29904525','Actualizada':'10 de noviembre de 2026','Tamaño':'10.2 MB','Requiere':'Android 7 o superior','Estado':'En pruebas'}
   },
   {
-    id:'cuarentena', nombre:'Cuarentena', cat:'Juego para Android', tipo:'android',
+    id:'cuarentena', nombre:'Cuarentena', cat:'Supervivencia zombi · Android', tipo:'android',
     estado:'Prueba abierta', estadoClase:'abierta',
-    icono: ICO.cuarentena, sinFoto:true,
-    fotos:[],
-    alt:'Cuarentena',
-    desc:'Ya es jugable y está lista para su prueba abierta: regístrate y entra de los primeros a probarla.',
-    feats:[],
-    info:{'Estado':'Lista para prueba abierta','Plataforma':'Android'}
+    icono:'img/juegos/cuarentena-icono.png',
+    fotos:['img/juegos/cuarentena-dia.jpg','img/juegos/cuarentena-noche.jpg','img/juegos/cuarentena-personaje.jpg','img/juegos/cuarentena-portada.jpg'],
+    video:'img/juegos/cuarentena-gameplay',
+    alt:'Captura de Cuarentena',
+    desc:'El brote empezó hoy en San Ánimas. Sal de la plaza, llega a tu casa y sobrevive día y noche en una ciudad llena de infectados.',
+    feats:['Una ciudad entera por explorar: distritos, río, edificios con pisos y sótanos, y zonas restringidas.','Hambre, sed, sueño, heridas, fracturas e infecciones: cada decisión cuenta.','Maletín por casillas, armas cuerpo a cuerpo y de fuego, linternas, fabricación y tu propia base.','Zombis con habilidades (corredores, brutos, gritones…) y supervivientes que pueden unirse a ti.','Modos Historia, Infinito y Horda, y multijugador en la misma red Wi-Fi.'],
+    info:{'Versión':'De prueba 0.9.4','Actualizada':'30 de octubre de 2026','Tamaño':'15.6 MB','Requiere':'Android 7 o superior','Estado':'Lista para prueba abierta'},
+    nota:'Ya es jugable: regístrate y entra de los primeros a probarla.'
   },
   {
     id:'spacey', nombre:'SPACE Y', cat:'Arcade espacial · En la web', tipo:'web',
@@ -589,6 +593,10 @@ document.getElementById('buscador').addEventListener('input', function(e){ texto
 
 /* ---------- Detalle ---------- */
 var appActual = null;
+function videoHTML(app){
+  return '<video poster="' + app.fotos[0] + '" controls playsinline preload="none" aria-label="Video de ' + esc(app.nombre) + '">'
+    + '<source src="' + app.video + '.mp4" type="video/mp4"><source src="' + app.video + '.webm" type="video/webm"></video>';
+}
 function abrirDetalle(id){
   var app = APPS.filter(function(a){ return a.id === id; })[0];
   if (!app) return;
@@ -599,11 +607,12 @@ function abrirDetalle(id){
   var principal = document.getElementById('d-principal');
   var thumbs = document.getElementById('d-thumbs');
   if (app.fotos.length) {
-    principal.innerHTML = '<img src="' + app.fotos[0] + '" alt="' + esc(app.alt) + '">';
-    thumbs.innerHTML = app.fotos.map(function(f, i){
-      return '<button type="button" data-foto="' + i + '" aria-pressed="' + (i === 0) + '" aria-label="Captura ' + (i + 1) + ' de ' + esc(app.nombre) + '"><img src="' + f + '" alt="" loading="lazy"></button>';
+    principal.innerHTML = app.video ? videoHTML(app) : '<img src="' + app.fotos[0] + '" alt="' + esc(app.alt) + '">';
+    thumbs.innerHTML = (app.video ? '<button type="button" data-video aria-pressed="true" aria-label="Video de ' + esc(app.nombre) + '"><img src="' + app.fotos[0] + '" alt="" loading="lazy"><span class="play" aria-hidden="true">▶</span></button>' : '')
+      + app.fotos.map(function(f, i){
+      return '<button type="button" data-foto="' + i + '" aria-pressed="' + (i === 0 && !app.video) + '" aria-label="Captura ' + (i + 1) + ' de ' + esc(app.nombre) + '"><img src="' + f + '" alt="" loading="lazy"></button>';
     }).join('');
-    thumbs.style.display = app.fotos.length > 1 ? 'flex' : 'none';
+    thumbs.style.display = app.fotos.length + (app.video ? 1 : 0) > 1 ? 'flex' : 'none';
   } else {
     principal.innerHTML = slotHTML(app, true);
     thumbs.innerHTML = ''; thumbs.style.display = 'none';
@@ -634,15 +643,16 @@ function abrirDetalle(id){
 document.addEventListener('click', function(e){
   var v = e.target.closest('[data-ver]');
   if (v) { abrirDetalle(v.getAttribute('data-ver')); return; }
-  var t = e.target.closest('[data-foto]');
+  var t = e.target.closest('[data-foto],[data-video]');
   if (t && appActual) {
-    var i = +t.getAttribute('data-foto');
-    document.getElementById('d-principal').innerHTML = '<img src="' + appActual.fotos[i] + '" alt="' + esc(appActual.alt) + '">';
-    document.querySelectorAll('[data-foto]').forEach(function(b){ b.setAttribute('aria-pressed', b === t ? 'true' : 'false'); });
+    document.getElementById('d-principal').innerHTML = t.hasAttribute('data-video') ? videoHTML(appActual)
+      : '<img src="' + appActual.fotos[+t.getAttribute('data-foto')] + '" alt="' + esc(appActual.alt) + '">';
+    document.querySelectorAll('#d-thumbs button').forEach(function(b){ b.setAttribute('aria-pressed', b === t ? 'true' : 'false'); });
   }
 });
 document.getElementById('d-cerrar').addEventListener('click', function(){ dlg.close(); });
 dlg.addEventListener('click', function(e){ if (e.target === dlg) dlg.close(); });
+dlg.addEventListener('close', function(){ var v = dlg.querySelector('video'); if (v) v.pause(); });
 
 /* ---------- Perfil (encuesta inicial) y comentarios ----------
    Guardado local en este equipo (localStorage): la versión estática
