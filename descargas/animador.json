@@ -1,13 +1,13 @@
 {
- "versionCode": 29904525,
- "version": "1.13.29904525",
- "fecha": "2026-11-10",
- "bytes": 10691184,
- "sha256": "107b95c0f1e5ada3cbaeb3a9b7deb72717635eeafa4e80fae4fc0f12a5fe6c56",
+ "versionCode": 29906131,
+ "version": "1.15.29906131",
+ "fecha": "2026-11-11",
+ "bytes": 23320061,
+ "sha256": "9037a99751cfc4b906b4e53e8340f9a278d9ca346a7ab3489858982fa41aa3ef",
  "notas": [
-  "Cara expresiva: la app crea formas faciales (sonrisa, cejas, ojos, mandíbula) en tus modelos",
-  "Expresiones listas: alegría, tristeza, enojo, sorpresa, miedo",
-  "Boca que habla: automática o siguiendo el volumen de un audio, y parpadeos",
-  "Físicas: pelo, colas, ropa y orejas con inercia, peso y rebote"
+  "Copia el movimiento de un vídeo: grábate y la app anima el esqueleto de tu modelo (sin internet)",
+  "Huesos de pelo: pinta el pelo, traza mechones y la app crea huesos, pesos y físicas",
+  "Físicas de pelo más sueltas y visibles",
+  "Cara expresiva, boca que habla y parpadeos"
  ]
 }
