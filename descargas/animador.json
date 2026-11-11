@@ -1,13 +1,13 @@
 {
- "versionCode": 29906469,
- "version": "1.15.29906469",
+ "versionCode": 29906920,
+ "version": "1.15.29906920",
  "fecha": "2026-11-11",
- "bytes": 27116462,
- "sha256": "6ed90117dd8e4aeac9fc2d51e9ad6d7f00179e8f4c7a7a6713580dfe65dab2d6",
+ "bytes": 27118741,
+ "sha256": "18c8d7b502a8719b9deab343a8a12352491f69e9871d062ca71ac16b112123fc",
  "notas": [
-  "Pies que ya no quedan de puntillas al levantarse",
-  "Cabeza y cuello más fieles, también con la cámara alta o de tres cuartos",
-  "La cadera ya no se inclina de más al echarse hacia delante",
-  "Muñecas que no se tuercen, pies que no resbalan y análisis el doble de rápido"
+  "Graba con la cámara y copia el movimiento a tu modelo al momento",
+  "Manda vídeos desde la galería o WhatsApp con Compartir → Animador",
+  "Pies, cabeza y cadera más fieles en la captura de vídeo",
+  "Análisis del vídeo el doble de rápido y app más ligera"
  ]
 }
