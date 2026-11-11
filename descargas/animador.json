@@ -1,13 +1,13 @@
 {
- "versionCode": 29906223,
- "version": "1.15.29906223",
+ "versionCode": 29906286,
+ "version": "1.15.29906286",
  "fecha": "2026-11-11",
- "bytes": 29179414,
- "sha256": "f656c2231b982b83bee0290805b69f38aa995c1115524e6e5879d08976d74860",
+ "bytes": 27115269,
+ "sha256": "a4a2e32ac80745bff5e5a450ebb93491aeb209a010fa7c295330d0c435e00186",
  "notas": [
-  "Copia el movimiento de un vídeo: cuerpo, muñecas y dedos, sin internet",
-  "Los brazos ya no atraviesan el cuerpo y el movimiento tiembla mucho menos",
-  "Rodillas y puñetazos hacia la cámara mejor captados",
-  "Huesos de pelo y físicas de pelo más visibles"
+  "Movimiento de vídeo más natural: pies que no se levantan ni resbalan y muñecas sin torcerse",
+  "Análisis del vídeo el doble de rápido",
+  "App más ligera",
+  "Manos y dedos, y brazos que no atraviesan el cuerpo"
  ]
 }
